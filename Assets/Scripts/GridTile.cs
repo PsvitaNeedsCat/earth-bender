@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [System.Serializable]
-public enum TileType
+public enum GroundType
 {
     dirt,
     rock
@@ -11,15 +12,41 @@ public enum TileType
 
 public class GridTile : MonoBehaviour
 {
-    public TileType type = TileType.dirt;
+    public GroundType type = GroundType.dirt;
+    public GameObject chunkPrefab;
     
     private static float tileSize = 10.0f;
+    private Chunk spawningChunk;
+
+    private void Awake()
+    {
+
+    }
 
     private void OnDrawGizmosSelected()
     {
-        if (type == TileType.dirt) { Gizmos.color = Color.cyan; }
+        if (type == GroundType.dirt) { Gizmos.color = Color.cyan; }
         else { Gizmos.color = Color.grey; }
 
         Gizmos.DrawWireCube(transform.position, new Vector3(tileSize, tileSize, tileSize));
+    }
+
+    public void StartRaiseChunk()
+    {
+        if (spawningChunk) { return; }
+
+        if (!spawningChunk)
+        {
+            spawningChunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
+        }
+
+        spawningChunk.StartRaise();
+    }
+
+    public void StopRaiseChunk()
+    {
+        Debug.Assert(spawningChunk);
+
+        spawningChunk.StopRaise();
     }
 }

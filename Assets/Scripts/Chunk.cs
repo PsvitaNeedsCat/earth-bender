@@ -73,4 +73,11 @@ public class Chunk : MonoBehaviour
     {
         transform.DOKill();
     }
+
+    public void Hit(Vector3 hitVec)
+    {
+        rigidBody.isKinematic = false;
+        rigidBody.drag = 0.0f;
+        rigidBody.AddForce(hitVec, ForceMode.Impulse);
+    }
 }

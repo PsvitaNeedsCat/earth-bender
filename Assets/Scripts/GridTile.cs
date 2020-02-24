@@ -33,6 +33,8 @@ public class GridTile : MonoBehaviour
 
     public void StartRaiseChunk()
     {
+        if (spawningChunk) { return; }
+
         if (!spawningChunk)
         {
             spawningChunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();

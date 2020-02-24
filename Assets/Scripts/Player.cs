@@ -24,9 +24,12 @@ public class Player : MonoBehaviour
 
         playerController = GetComponent<PlayerController>();
 
-        // Controls
+        // Controls //
+        // Movement
         controls.Player.HorizontalMovement.performed += ctx => playerDirection.x = ctx.ReadValue<float>();
         controls.Player.VerticalMovement.performed += ctx => playerDirection.y = ctx.ReadValue<float>();
+        // Punch attack
+        controls.Player.AttackPress.performed += _ => playerController.Punch();
     }
 
     private void FixedUpdate()

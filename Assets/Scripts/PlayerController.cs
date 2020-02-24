@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // Public
     public float moveSpeed = 1.0f;
+    public GameObject hurtBoxRef;
 
     // Private
     Rigidbody m_rigidBody;
@@ -15,6 +16,10 @@ public class PlayerController : MonoBehaviour
         m_rigidBody = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// Move forward in a given direction
+    /// </summary>
+    /// <param name="_direction"> Direction </param>
     public void Move(Vector2 _direction)
     {
         // Get yaw
@@ -30,5 +35,23 @@ public class PlayerController : MonoBehaviour
         this.transform.forward = moveDir;
         // Add force
         m_rigidBody.AddForce(moveDir * 10.0f * moveSpeed, ForceMode.Impulse);
+    }
+
+    /// <summary>
+    /// Creates hurt box directly in front of player for a short period of time
+    /// </summary>
+    public void Punch()
+    {
+        Vector3 spawnPos = transform.position;
+        float moveBy = (GetComponent<Collider>().bounds.size.z * 0.5f) + (hurtBoxRef.GetComponent<Collider>().bounds.size.z * 0.5f);
+        // Normalise transform.forward
+        // Multiply by moveBy value
+        // Add to spawnPos
+        spawnPos += (transform.forward * moveBy);
+
+        spawnPos.y += GetComponent<Collider>().bounds.size.y * 0.5f;
+
+        // Spawn in
+        Instantiate(hurtBoxRef, spawnPos, transform.rotation);
     }
 }

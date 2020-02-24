@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // Public
     public float moveSpeed = 1.0f;
     public GameObject hurtBoxRef;
+    public float punchBoxMoveBy;
 
     // Private
     Rigidbody m_rigidBody;
@@ -43,11 +44,10 @@ public class PlayerController : MonoBehaviour
     public void Punch()
     {
         Vector3 spawnPos = transform.position;
-        float moveBy = (GetComponent<Collider>().bounds.size.z * 0.5f) + (hurtBoxRef.GetComponent<Collider>().bounds.size.z * 0.5f);
         // Normalise transform.forward
         // Multiply by moveBy value
         // Add to spawnPos
-        spawnPos += (transform.forward * moveBy);
+        spawnPos += (transform.forward.normalized * punchBoxMoveBy);
 
         spawnPos.y += GetComponent<Collider>().bounds.size.y * 0.5f;
 

@@ -128,6 +128,7 @@ MonoBehaviour:
   moveSpeed: 1
   hurtBoxRef: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
     type: 3}
+  punchBoxMoveBy: 5
 --- !u!136 &91581382168510934
 CapsuleCollider:
   m_ObjectHideFlags: 0

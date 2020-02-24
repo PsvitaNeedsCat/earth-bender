@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     PlayerController playerController;
     Vector2 playerDirection = new Vector2(0.0f, 0.0f);
     Rigidbody m_rigidBody;
+    float punchCooldown = 0.0f;
+    float punchCooldownMax = 1.0f;
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour
         controls.Player.HorizontalMovement.performed += ctx => playerDirection.x = ctx.ReadValue<float>();
         controls.Player.VerticalMovement.performed += ctx => playerDirection.y = ctx.ReadValue<float>();
         // Punch attack
-        controls.Player.AttackPress.performed += _ => playerController.Punch();
+        controls.Player.AttackPress.performed += _ => AttemptPunch();
     }
 
     private void FixedUpdate()
@@ -41,5 +43,16 @@ public class Player : MonoBehaviour
         vel.x *= (0.98f / drag);
         vel.z *= (0.98f / drag);
         m_rigidBody.velocity = vel;
+
+        if (punchCooldown > 0.0f) punchCooldown -= Time.fixedDeltaTime;
+    }
+
+    void AttemptPunch()
+    {
+        if (punchCooldown <= 0.0f)
+        {
+            playerController.Punch();
+            punchCooldown = punchCooldownMax;
+        }
     }
 }

@@ -13,6 +13,7 @@ public class GridTest : MonoBehaviour
         GridTile closest = grid.FindClosestTile(transform.position);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(closest.transform.position, Vector3.one * 1.1f);
+        Gizmos.DrawCube(closest.transform.position, Vector3.one * 11.0f);
+
     }
 }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 2
+  punchCooldownMax: 0.1
 --- !u!114 &91581382168510933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   hurtBoxRef: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
     type: 3}
   punchBoxMoveBy: 5
+  grid: {fileID: 0}
 --- !u!136 &91581382168510934
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,6 @@ public class GridTile : MonoBehaviour
     
     private static float tileSize = 10.0f;
     private Chunk spawningChunk;
-
     private void Awake()
     {
 
@@ -38,6 +37,7 @@ public class GridTile : MonoBehaviour
         if (!spawningChunk)
         {
             spawningChunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
+            spawningChunk.owner = this;
         }
 
         spawningChunk.StartRaise();
@@ -48,5 +48,10 @@ public class GridTile : MonoBehaviour
         Debug.Assert(spawningChunk);
 
         spawningChunk.StopRaise();
+    }
+
+    public void RemoveChunk()
+    {
+        spawningChunk = null;
     }
 }

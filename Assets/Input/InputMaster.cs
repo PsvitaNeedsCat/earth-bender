@@ -51,20 +51,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=1)""
                 },
                 {
-                    ""name"": ""Horizontal Movement"",
-                    ""type"": ""Button"",
-                    ""id"": ""fad90a4d-e986-4ae9-9368-770cd4245f6d"",
-                    ""expectedControlType"": """",
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""db59a542-c06d-445e-b530-13e55b0a7ecc"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""Vertical Movement"",
-                    ""type"": ""Button"",
-                    ""id"": ""848360cf-1730-4fe2-bab1-76d7eaef17a2"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -157,134 +149,68 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Analog Stick"",
-                    ""id"": ""90939527-daa0-4c8b-8077-f4db5bb4ad51"",
-                    ""path"": ""1DAxis"",
+                    ""name"": """",
+                    ""id"": ""bfc3cbe1-a4af-459c-b146-d36b89b8191e"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""95b6400a-b50f-4c1d-b3e0-8e7bcb6aa775"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal Movement"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""47e227ce-dccb-47af-aa50-8837f06805a8"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Horizontal Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""0fde66a3-4d74-42db-9be1-c322d2ff9035"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Horizontal Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""AD"",
-                    ""id"": ""e11cb36a-6539-47c6-bb8d-3dfee3690ecb"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""26f5af34-f9ee-4405-9ad0-02892946d830"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Horizontal Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""aa561fbb-a877-4d00-838a-fdce3e298d6e"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Horizontal Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Analog Stick"",
-                    ""id"": ""351b0b3b-1a40-4908-93c8-3c14ca250ff5"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""ccfe94b5-6d8d-4d53-bad5-7e36394463da"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Vertical Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""2333bc99-9c31-44ef-bbc3-21baf6223fad"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Vertical Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""WS"",
-                    ""id"": ""5c8375bf-98d4-4f0d-9fb1-e2ea79bca249"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""05e4e844-6278-4550-9f0e-f3510a85a49a"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Vertical Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""bde13bcc-5ac4-4444-8fb9-836eb175fe5d"",
+                    ""name"": ""up"",
+                    ""id"": ""af03a924-7a31-42a7-8c3c-574a1b09d1a0"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Vertical Movement"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""42ad40a9-cc2e-4619-805e-ad26785aaed2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""d995b4c2-5920-48cc-be5c-07a7ee51df0b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""27146fac-d616-4174-8131-c255b34ce4e3"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -322,8 +248,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_AttackRelease = m_Player.FindAction("Attack Release", throwIfNotFound: true);
         m_Player_ChargePress = m_Player.FindAction("Charge Press", throwIfNotFound: true);
         m_Player_ChargeRelease = m_Player.FindAction("Charge Release", throwIfNotFound: true);
-        m_Player_HorizontalMovement = m_Player.FindAction("Horizontal Movement", throwIfNotFound: true);
-        m_Player_VerticalMovement = m_Player.FindAction("Vertical Movement", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -377,8 +302,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_AttackRelease;
     private readonly InputAction m_Player_ChargePress;
     private readonly InputAction m_Player_ChargeRelease;
-    private readonly InputAction m_Player_HorizontalMovement;
-    private readonly InputAction m_Player_VerticalMovement;
+    private readonly InputAction m_Player_Movement;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -387,8 +311,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @AttackRelease => m_Wrapper.m_Player_AttackRelease;
         public InputAction @ChargePress => m_Wrapper.m_Player_ChargePress;
         public InputAction @ChargeRelease => m_Wrapper.m_Player_ChargeRelease;
-        public InputAction @HorizontalMovement => m_Wrapper.m_Player_HorizontalMovement;
-        public InputAction @VerticalMovement => m_Wrapper.m_Player_VerticalMovement;
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,12 +333,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ChargeRelease.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeRelease;
                 @ChargeRelease.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeRelease;
                 @ChargeRelease.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChargeRelease;
-                @HorizontalMovement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorizontalMovement;
-                @HorizontalMovement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorizontalMovement;
-                @HorizontalMovement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorizontalMovement;
-                @VerticalMovement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalMovement;
-                @VerticalMovement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalMovement;
-                @VerticalMovement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalMovement;
+                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -432,12 +352,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @ChargeRelease.started += instance.OnChargeRelease;
                 @ChargeRelease.performed += instance.OnChargeRelease;
                 @ChargeRelease.canceled += instance.OnChargeRelease;
-                @HorizontalMovement.started += instance.OnHorizontalMovement;
-                @HorizontalMovement.performed += instance.OnHorizontalMovement;
-                @HorizontalMovement.canceled += instance.OnHorizontalMovement;
-                @VerticalMovement.started += instance.OnVerticalMovement;
-                @VerticalMovement.performed += instance.OnVerticalMovement;
-                @VerticalMovement.canceled += instance.OnVerticalMovement;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
             }
         }
     }
@@ -466,7 +383,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnAttackRelease(InputAction.CallbackContext context);
         void OnChargePress(InputAction.CallbackContext context);
         void OnChargeRelease(InputAction.CallbackContext context);
-        void OnHorizontalMovement(InputAction.CallbackContext context);
-        void OnVerticalMovement(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     // Private
     Rigidbody m_rigidBody;
 
+    // Temp
+    public LevelGrid grid;
+    private GridTile currentTile;
+
     private void Awake()
     {
         m_rigidBody = GetComponent<Rigidbody>();
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
         // Set look direction
         this.transform.forward = moveDir;
         // Add force
-        m_rigidBody.AddForce(moveDir * 10.0f * moveSpeed, ForceMode.Impulse);
+        m_rigidBody.AddForce(moveDir.normalized * 10.0f * moveSpeed, ForceMode.Impulse);
     }
 
     /// <summary>
@@ -53,5 +57,19 @@ public class PlayerController : MonoBehaviour
 
         // Spawn in
         Instantiate(hurtBoxRef, spawnPos, transform.rotation);
+    }
+
+    public void StartCharging()
+    {
+        currentTile = grid.FindClosestTile(transform.position + transform.forward * 10.0f);
+
+        currentTile.StartRaiseChunk();
+    }
+
+    public void StopCharging()
+    {
+        Debug.Assert(currentTile);
+
+        currentTile.StopRaiseChunk();
     }
 }

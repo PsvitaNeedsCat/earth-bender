@@ -7,8 +7,9 @@ using DG.Tweening;
 public class Chunk : MonoBehaviour
 {
     public GroundType type;
-    public static float raiseTime = 1.0f;
+    public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
+    [HideInInspector] public GridTile owner;
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     private float amountRaised = 0.0f;
@@ -76,8 +77,15 @@ public class Chunk : MonoBehaviour
 
     public void Hit(Vector3 hitVec)
     {
+        if (!isRaised) { return; }
+
         rigidBody.isKinematic = false;
         rigidBody.drag = 0.0f;
+
+        Debug.Log(hitVec);
+
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
+
+        owner.RemoveChunk();
     }
 }

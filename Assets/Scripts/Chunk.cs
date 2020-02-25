@@ -9,6 +9,7 @@ public class Chunk : MonoBehaviour
     public GroundType type;
     public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
+    public static float damage = 10.0f;
     [HideInInspector] public GridTile owner;
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
@@ -87,5 +88,16 @@ public class Chunk : MonoBehaviour
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
         owner.RemoveChunk();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        FrogBoss boss = collision.gameObject.GetComponent<FrogBoss>();
+
+        if (boss)
+        {
+            boss.Damage(damage);
+            Destroy(this.gameObject);
+        }
     }
 }

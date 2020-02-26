@@ -49,9 +49,12 @@ public class AudioManager : MonoBehaviour
         Debug.Assert(clip, "Couldn't find audio clip");
 
         GameObject soundEffectPlayer = new GameObject("SoundEffectPlayer");
-        soundEffectPlayer.transform.parent = this.transform;
-        AudioSource audioSource = soundEffectPlayer.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(clip);
-        Destroy(soundEffectPlayer, clip.length);
+        if (soundEffectPlayer)
+        {
+            soundEffectPlayer.transform.parent = this.transform;
+            AudioSource audioSource = soundEffectPlayer.AddComponent<AudioSource>();
+            audioSource.PlayOneShot(clip);
+            Destroy(soundEffectPlayer, clip.length);
+        }
     }
 }

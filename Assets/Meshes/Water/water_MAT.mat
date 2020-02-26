@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DepthRampTex:
-        m_Texture: {fileID: 2800000, guid: ea211a9d6ea00f8419afab0733074793, type: 3}
+        m_Texture: {fileID: 2800000, guid: 522a7023c7c06bc41a7c119d7b9b64ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -29,21 +29,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 17ebf6cdb132f81459868d6f71ea965f, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _WaveNoise:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DepthFactor: 0.47
+    - _DepthFactor: 0.44
     - _DistortStrength: 1
-    - _ExtraHeight: -0.56
-    - _WaveAmp: 0.05
+    - _ExtraHeight: -0.2
+    - _WaveAmp: 0.01
     - _WaveHeight: 0.5
     - _WaveSpeed: 100
     - _WaveStrength: 0.04
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.5424528, g: 0.9548837, b: 1, a: 0.65882355}
+    - _Color: {r: 0.19651122, g: 0.5874939, b: 0.6037736, a: 0.92941177}
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}

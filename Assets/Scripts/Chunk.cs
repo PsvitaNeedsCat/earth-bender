@@ -64,7 +64,7 @@ public class Chunk : MonoBehaviour
     private void OnDestroy()
     {
         transform.DOKill();
-        owningTile.RemoveChunk();
+        if (owningTile) { owningTile.RemoveChunk(); }
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
         AudioManager.Instance.PlaySound("RockDestroy");
     }
@@ -73,14 +73,20 @@ public class Chunk : MonoBehaviour
     {
         if (!isRaised) { return; }
 
-        rigidBody.isKinematic = false;
-        rigidBody.drag = 0.0f;
+        Detach();
 
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
-        owningTile.RemoveChunk();
-
         AudioManager.Instance.PlaySound("RockHit");
+    }
+
+    public void Detach()
+    {
+        Debug.Log("Detach");
+        rigidBody.isKinematic = false;
+        rigidBody.drag = 0.0f;
+        owningTile.RemoveChunk();
+        owningTile = null;
     }
 
     private void OnCollisionEnter(Collision collision)

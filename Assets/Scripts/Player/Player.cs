@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
 
         // Controls //
         // Movement
-        //controls.Player.HorizontalMovement.performed += ctx => playerDirection.x = ctx.ReadValue<float>();
-        //controls.Player.VerticalMovement.performed += ctx => playerDirection.y = ctx.ReadValue<float>();
         controls.Player.Movement.performed += ctx => playerDirection = ctx.ReadValue<Vector2>();
+        controls.Player.KeyboardHorizontal.performed += ctx => playerDirection.x = ctx.ReadValue<float>();
+        controls.Player.KeyboardVertical.performed += ctx => playerDirection.y = ctx.ReadValue<float>();
         // Punch attack
         controls.Player.AttackPress.performed += _ => AttemptPunch();
         controls.Player.ChargePress.performed += _ => playerController.ActivateTileTargeter();

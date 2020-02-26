@@ -15,6 +15,7 @@ public class Chunk : MonoBehaviour
     [HideInInspector] public bool isRaised = false;
     [HideInInspector] public GridTile owningTile;
 
+    private bool attemptingToStop = false;
     private int health = 2;
     public int Health
     {
@@ -23,6 +24,18 @@ public class Chunk : MonoBehaviour
         {
             health = value;
             if (health <= 0) { Death(); }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (attemptingToStop)
+        {
+            if (rigidBody.velocity == Vector3.zero)
+            {
+                attemptingToStop = false;
+                rigidBody.isKinematic = true;
+            }
         }
     }
 
@@ -104,12 +117,9 @@ public class Chunk : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        FrogBoss boss = collision.gameObject.GetComponent<FrogBoss>();
-
-        if (boss)
+        if (collision.collider.tag != "Ground" && collision.collider.tag != "Player")
         {
-            boss.Damage(damage);
-            Destroy(this.gameObject);
+            attemptingToStop = true;
         }
     }
 }

@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  hurtBoxPrefab: {fileID: 0}
+  hurtBoxPrefab: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
+    type: 3}
   punchBoxMoveBy: 5
   tileTargeter: {fileID: 3816267807807297370}
   maxChunks: 3

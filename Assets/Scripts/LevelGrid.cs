@@ -19,7 +19,7 @@ public class LevelGrid : MonoBehaviour
         // Debug.Assert(groundTiles.Length > 0);
 
         float sqrtResult = Mathf.Sqrt(numTiles);
-        Debug.Assert((sqrtResult % 1) == 0, "Tile grid doesn't have a square number of tiles");
+        Debug.Assert((sqrtResult % 1) == 0, "Tile grid doesn't have a square number of tiles"); // Is that a problem?
 
         numRows = (int)sqrtResult;
         numCols = (int)sqrtResult;

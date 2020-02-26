@@ -28,6 +28,8 @@ public class HurtBoxScript : MonoBehaviour
 
             Vector3 cardinal = GetCardinalDir(forward);
             chunk.Hit(cardinal * hitForce);
+
+            Destroy(this.gameObject);
         }
     }
 

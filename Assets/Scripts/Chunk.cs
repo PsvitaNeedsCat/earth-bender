@@ -10,70 +10,61 @@ public class Chunk : MonoBehaviour
     public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
     public static float damage = 10.0f;
-    [HideInInspector] public GridTile owner;
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
-    private float amountRaised = 0.0f;
-    private bool isRaising = false;
     [HideInInspector] public bool isRaised = false;
+    [HideInInspector] public GridTile owningTile;
+
+    private int health = 2;
+    public int Health
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+            if (health <= 0) { Death(); }
+        }
+    }
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.isKinematic = true;
         spawnPosition = transform.position;
+
+        FindObjectOfType<PlayerController>().AddChunk(this); // ew
     }
 
-    public void StartRaise()
+    public void RaiseChunk()
     {
-        if (isRaised) { return; }
+        StartCoroutine(Raise());
+    }
 
+    public void Damage(int amount)
+    {
+        Health -= amount;
+    }
+
+    private IEnumerator Raise()
+    {
         transform.DOKill();
-        transform.DOMoveY(spawnPosition.y + raiseAmount, raiseTime - amountRaised / raiseTime);
+        transform.DOMoveY(spawnPosition.y + raiseAmount, raiseTime).SetEase(Ease.OutBounce);
 
-        isRaising = true;
+        yield return new WaitForSeconds(raiseTime);
+
+        isRaised = true;
     }
 
-    public void StopRaise()
+    private void Death()
     {
-        if (isRaised) { return; }
-
-        transform.DOKill();
-        transform.DOMoveY(spawnPosition.y, amountRaised / raiseTime);
-
-        isRaising = false;
-    }
-
-    private void Update()
-    {
-        RaiseUpdate();
-    }
-
-    private void RaiseUpdate()
-    {
-        if (isRaising)
-        {
-            amountRaised = Mathf.Clamp(amountRaised + Time.deltaTime/raiseTime, 0.0f, 1.0f);
-        }
-        else
-        {
-            amountRaised = Mathf.Clamp(amountRaised - Time.deltaTime / raiseTime, 0.0f, 1.0f);
-        }
-
-        if (amountRaised > 0.99f)
-        {
-            isRaised = true;
-        }
-
-        if (amountRaised < 0.01f && !isRaising)
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 
     private void OnDestroy()
     {
         transform.DOKill();
+        owningTile.RemoveChunk();
+        FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
     }
 
     public void Hit(Vector3 hitVec)
@@ -83,11 +74,9 @@ public class Chunk : MonoBehaviour
         rigidBody.isKinematic = false;
         rigidBody.drag = 0.0f;
 
-        Debug.Log(hitVec);
-
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
-        owner.RemoveChunk();
+        owningTile.RemoveChunk();
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
     
-
     private void Awake()
     {
         // Init stuff
@@ -34,16 +33,14 @@ public class Player : MonoBehaviour
         controls.Player.Movement.performed += ctx => playerDirection = ctx.ReadValue<Vector2>();
         // Punch attack
         controls.Player.AttackPress.performed += _ => AttemptPunch();
-        controls.Player.ChargePress.performed += _ => playerController.StartCharging();
-        controls.Player.ChargeRelease.performed += _ => playerController.StopCharging();
+        controls.Player.ChargePress.performed += _ => playerController.ActivateTileTargeter();
+        controls.Player.ChargeRelease.performed += _ => playerController.DeactivateTileTargeter();
+        controls.Player.ChargeRelease.performed += _ => playerController.TryRaiseChunk();
     }
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(playerDirection.x) > 0.5f || Mathf.Abs(playerDirection.y) > 0.5f)
-        {
-            playerController.Move(playerDirection);
-        }
+        MovePlayer();
 
         // Manual Drag (X and Z)
         Vector3 vel = m_rigidBody.velocity;
@@ -52,6 +49,14 @@ public class Player : MonoBehaviour
         m_rigidBody.velocity = vel;
 
         if (punchCooldown > 0.0f) punchCooldown -= Time.fixedDeltaTime;
+    }
+
+    private void MovePlayer()
+    {
+        if (Mathf.Abs(playerDirection.x) > 0.5f || Mathf.Abs(playerDirection.y) > 0.5f)
+        {
+            playerController.Move(playerDirection);
+        }
     }
 
     void AttemptPunch()

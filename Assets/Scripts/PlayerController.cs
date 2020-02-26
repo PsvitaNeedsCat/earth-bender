@@ -6,19 +6,23 @@ public class PlayerController : MonoBehaviour
 {
     // Public
     public float moveSpeed = 1.0f;
-    public GameObject hurtBoxRef;
+    public GameObject hurtBoxPrefab;
     public float punchBoxMoveBy;
+    public GameObject tileTargeter;
+    public int maxChunks = 3;
 
     // Private
-    Rigidbody m_rigidBody;
+    private Rigidbody m_rigidBody;
+    private List<Chunk> activeChunks;
 
     // Temp
     public LevelGrid grid;
-    private GridTile currentTile;
 
     private void Awake()
     {
         m_rigidBody = GetComponent<Rigidbody>();
+
+        activeChunks = new List<Chunk>();
     }
 
     /// <summary>
@@ -56,20 +60,52 @@ public class PlayerController : MonoBehaviour
         spawnPos.y += GetComponent<Collider>().bounds.size.y * 0.5f;
 
         // Spawn in
-        Instantiate(hurtBoxRef, spawnPos, transform.rotation);
+        Instantiate(hurtBoxPrefab, spawnPos, transform.rotation);
     }
 
-    public void StartCharging()
+    public void ActivateTileTargeter()
     {
-        currentTile = grid.FindClosestTile(transform.position + transform.forward * 10.0f);
-
-        currentTile.StartRaiseChunk();
+        // Debug.Log("Activated tile targeter");
+        tileTargeter.SetActive(true);
     }
 
-    public void StopCharging()
+    public void DeactivateTileTargeter()
     {
-        Debug.Assert(currentTile);
+        // Debug.Log("Deactivated tile targeter");
+        tileTargeter.SetActive(false);
+    }
 
-        currentTile.StopRaiseChunk();
+    public void TryRaiseChunk()
+    {
+        // Debug.Log("Trying raise chunk");
+        GridTile tile = grid.FindClosestTile(transform.position + transform.forward * 10.0f);
+        tile.TryRaiseChunk();
+    }
+
+    public void AddChunk(Chunk newChunk)
+    {
+        // If at chunk limit, destroy oldest chunk
+        if (activeChunks.Count >= maxChunks && activeChunks.Count > 0)
+        {
+            RemoveChunk(activeChunks[0]);
+        }
+
+        // Create new chunk
+        activeChunks.Add(newChunk);
+    }
+
+    public void RemoveChunk(Chunk removeChunk)
+    {
+        for (int i = 0; i < activeChunks.Count; i++)
+        {
+            if (activeChunks[i].GetInstanceID() == removeChunk.GetInstanceID())
+            {
+                Destroy(activeChunks[i].gameObject);
+                activeChunks.RemoveAt(i);
+                return;
+            }
+        }
+
+        Debug.Assert(true, "Couldn't find chunk to be removed");
     }
 }

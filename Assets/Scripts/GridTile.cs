@@ -14,9 +14,10 @@ public class GridTile : MonoBehaviour
 {
     public GroundType type = GroundType.dirt;
     public GameObject chunkPrefab;
-    
+       
     private static float tileSize = 10.0f;
-    private Chunk spawningChunk;
+    private Chunk chunk;
+
     private void Awake()
     {
 
@@ -30,28 +31,18 @@ public class GridTile : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(tileSize, tileSize, tileSize));
     }
 
-    public void StartRaiseChunk()
+    public void TryRaiseChunk()
     {
-        if (spawningChunk) { return; }
+        // Don't try to raise a chunk if there's already one here
+        if (chunk) { return; }
 
-        if (!spawningChunk)
-        {
-            spawningChunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
-            spawningChunk.owner = this;
-        }
-
-        spawningChunk.StartRaise();
-    }
-
-    public void StopRaiseChunk()
-    {
-        Debug.Assert(spawningChunk);
-
-        spawningChunk.StopRaise();
+        chunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
+        chunk.RaiseChunk();
+        chunk.owningTile = this;
     }
 
     public void RemoveChunk()
     {
-        spawningChunk = null;
+        chunk = null;
     }
 }

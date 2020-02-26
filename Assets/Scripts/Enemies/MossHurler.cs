@@ -27,11 +27,25 @@ public class MossHurler : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<Chunk>())
+        {
+            Destroy(collision.collider.gameObject);
+            this.Dead();
+        }
+    }
+
     private void FireProjectile()
     {
         attackTimer = attackCooldown;
         MossHurlerProjectile projectile = Instantiate(projectilePrefab, projectileCreationTransform.position, projectileCreationTransform.rotation, null).GetComponent<MossHurlerProjectile>();
         projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileSpeed;
         projectile.damage = this.damage;
+    }
+
+    public void Dead()
+    {
+        this.gameObject.SetActive(false);
     }
 }

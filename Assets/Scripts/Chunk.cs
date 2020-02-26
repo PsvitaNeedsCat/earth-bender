@@ -35,6 +35,7 @@ public class Chunk : MonoBehaviour
             {
                 attemptingToStop = false;
                 rigidBody.isKinematic = true;
+                Debug.Log("Stopped");
             }
         }
     }
@@ -109,14 +110,20 @@ public class Chunk : MonoBehaviour
         Debug.Log("Detach");
         rigidBody.isKinematic = false;
         rigidBody.drag = 0.0f;
-        owningTile.RemoveChunk();
-        owningTile = null;
+        if (owningTile)
+        {
+            owningTile.RemoveChunk();
+            owningTile = null;
+        }
     }
 
     private bool IsAgainstWall(Vector3 hitVec)
     {
+        Vector3 checkPosition = transform.position;
+        checkPosition.y -= 4.5f; // Almost bottom of chunk
+
         // Raycast in the direction of hit vec for half a chunks length
-        if (Physics.Raycast(transform.position, hitVec, 5.0f))
+        if (Physics.Raycast(checkPosition, hitVec, 5.0f))
         {
             // Hit something, thus a wall
             return true;

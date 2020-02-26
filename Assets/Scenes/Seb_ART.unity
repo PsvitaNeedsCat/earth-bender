@@ -2488,8 +2488,6 @@ MonoBehaviour:
   - {fileID: 1488837430}
   - {fileID: 221318043}
   - {fileID: 353902358}
-  numRows: 0
-  numCols: 0
 --- !u!114 &1134867829 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3895855595473161120, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
@@ -2778,6 +2776,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 91581382168510938, guid: d8c7dd7845e406a418f9b82084b95b6f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3816267807807297370, guid: d8c7dd7845e406a418f9b82084b95b6f,
         type: 3}
       propertyPath: m_IsActive
@@ -2797,7 +2800,7 @@ GameObject:
   - component: {fileID: 1366371936}
   - component: {fileID: 1366371935}
   - component: {fileID: 1366371934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2813,7 +2816,7 @@ Transform:
   m_GameObject: {fileID: 1366371932}
   m_LocalRotation: {x: -0, y: -0, z: 0.30134568, w: 0.95351505}
   m_LocalPosition: {x: -7.67, y: 8.54, z: 11.059999}
-  m_LocalScale: {x: 18.39941, y: 1, z: 9.902585}
+  m_LocalScale: {x: 18.39941, y: 1, z: 9.532328}
   m_Children: []
   m_Father: {fileID: 1514530178}
   m_RootOrder: 5
@@ -3292,8 +3295,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514530177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.4414, y: 1.1278782, z: 29.909365}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 36.4414, y: 1.1278782, z: 30.15}
+  m_LocalScale: {x: 1, y: 1, z: 0.98753}
   m_Children:
   - {fileID: 1240294372}
   - {fileID: 166447668}

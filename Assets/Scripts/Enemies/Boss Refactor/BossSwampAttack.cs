@@ -6,6 +6,8 @@ public class BossSwampAttack : BossBehaviour
 {
     public override void StartBehaviour()
     {
+        base.StartBehaviour();
+
         Debug.Log("Started swamp attack behaviour - will run for 4 seconds");
         StartCoroutine(CompleteAfterSeconds(4.0f));
     }

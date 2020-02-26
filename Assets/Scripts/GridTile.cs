@@ -6,6 +6,7 @@ using DG.Tweening;
 [System.Serializable]
 public enum GroundType
 {
+    none,
     dirt,
     rock
 }

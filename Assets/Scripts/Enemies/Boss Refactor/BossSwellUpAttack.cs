@@ -6,6 +6,8 @@ public class BossSwellUpAttack : BossBehaviour
 {
     public override void StartBehaviour()
     {
+        base.StartBehaviour();
+
         Debug.Log("Started swell up attack behaviour - will run for 5 seconds");
         StartCoroutine(CompleteAfterSeconds(5.0f));
     }

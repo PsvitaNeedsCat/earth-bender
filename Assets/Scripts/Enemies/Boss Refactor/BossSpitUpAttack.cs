@@ -6,6 +6,8 @@ public class BossSpitUpAttack : BossBehaviour
 {
     public override void StartBehaviour()
     {
+        base.StartBehaviour();
+
         Debug.Log("Started spit up attack behaviour - will run for 3 seconds");
         StartCoroutine(CompleteAfterSeconds(3.0f));
     }

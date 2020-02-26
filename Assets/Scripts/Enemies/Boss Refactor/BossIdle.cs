@@ -8,6 +8,8 @@ public class BossIdle : BossBehaviour
 
     public override void StartBehaviour()
     {
+        base.StartBehaviour();
+
         Debug.Log("Started idle behaviour - will run for " + idleDuration + " seconds");
         StartCoroutine(CompleteAfterSeconds(idleDuration));
     }

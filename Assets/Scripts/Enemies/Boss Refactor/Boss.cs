@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        Random.InitState((int)System.DateTime.Now.Ticks);
         Debug.Assert(behaviourLoop.Count > 0, "No behaviours in behaviour loop");
         totalbehaviours = behaviourLoop.Count;
     }

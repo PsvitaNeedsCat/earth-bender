@@ -33,6 +33,7 @@ public class Chunk : MonoBehaviour
         spawnPosition = transform.position;
 
         FindObjectOfType<PlayerController>().AddChunk(this); // ew
+        AudioManager.Instance.PlaySound("RockCall");
     }
 
     public void RaiseChunk()
@@ -65,6 +66,7 @@ public class Chunk : MonoBehaviour
         transform.DOKill();
         owningTile.RemoveChunk();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
+        AudioManager.Instance.PlaySound("RockDestroy");
     }
 
     public void Hit(Vector3 hitVec)
@@ -77,6 +79,8 @@ public class Chunk : MonoBehaviour
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
         owningTile.RemoveChunk();
+
+        AudioManager.Instance.PlaySound("RockHit");
     }
 
     private void OnCollisionEnter(Collision collision)

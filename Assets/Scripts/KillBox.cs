@@ -12,5 +12,12 @@ public class KillBox : MonoBehaviour
         {
             chunk.Damage(99);
         }
+
+        MossHurlerProjectile mossHurlerProjectile = other.GetComponent<MossHurlerProjectile>();
+
+        if (mossHurlerProjectile)
+        {
+            mossHurlerProjectile.DestroyProjectile();
+        }
     }
 }

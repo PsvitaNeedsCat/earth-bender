@@ -44,6 +44,7 @@ public class Chunk : MonoBehaviour
     public void Damage(int amount)
     {
         Health -= amount;
+        Debug.Log("Damaged");
     }
 
     private IEnumerator Raise()
@@ -73,7 +74,17 @@ public class Chunk : MonoBehaviour
     {
         if (!isRaised) { return; }
 
+        
+        if (IsAgainstWall(hitVec))
+        {
+            Damage(1);
+            return;
+        }
+
         Detach();
+
+        rigidBody.isKinematic = false;
+        rigidBody.drag = 0.0f;
 
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
@@ -87,6 +98,18 @@ public class Chunk : MonoBehaviour
         rigidBody.drag = 0.0f;
         owningTile.RemoveChunk();
         owningTile = null;
+    }
+
+    private bool IsAgainstWall(Vector3 hitVec)
+    {
+        // Raycast in the direction of hit vec for half a chunks length
+        if (Physics.Raycast(transform.position, hitVec, 5.0f))
+        {
+            // Hit something, thus a wall
+            return true;
+        }
+
+        return false;
     }
 
     private void OnCollisionEnter(Collision collision)

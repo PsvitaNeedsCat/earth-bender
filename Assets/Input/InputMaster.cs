@@ -57,6 +57,22 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Keyboard Horizontal"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d29a051-ab62-410d-88e4-1bf2858cb60d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Keyboard Vertical"",
+                    ""type"": ""Button"",
+                    ""id"": ""6be06206-5c82-4cf7-9886-98afc88abfd0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -160,57 +176,68 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""95b6400a-b50f-4c1d-b3e0-8e7bcb6aa775"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""AD"",
+                    ""id"": ""634ed13b-9cf5-4f8e-9e3d-9cd8c20dde96"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Keyboard Horizontal"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""af03a924-7a31-42a7-8c3c-574a1b09d1a0"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""42ad40a9-cc2e-4619-805e-ad26785aaed2"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""d995b4c2-5920-48cc-be5c-07a7ee51df0b"",
+                    ""name"": ""negative"",
+                    ""id"": ""ff846dc2-5f82-4c8a-883e-135f232cae2f"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Keyboard Horizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""27146fac-d616-4174-8131-c255b34ce4e3"",
+                    ""name"": ""positive"",
+                    ""id"": ""8fc581ec-d9e7-4016-94a2-0e4f76d9b7bc"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Keyboard Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WS"",
+                    ""id"": ""f70eee4c-b850-4e62-a0da-85161d9ddf6a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Keyboard Vertical"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ecc84651-865c-4791-94a1-5135c8d21040"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Keyboard Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e4a302c5-ec1c-4c27-827c-6ae96670d19e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Keyboard Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -249,6 +276,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_ChargePress = m_Player.FindAction("Charge Press", throwIfNotFound: true);
         m_Player_ChargeRelease = m_Player.FindAction("Charge Release", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_KeyboardHorizontal = m_Player.FindAction("Keyboard Horizontal", throwIfNotFound: true);
+        m_Player_KeyboardVertical = m_Player.FindAction("Keyboard Vertical", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -303,6 +332,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ChargePress;
     private readonly InputAction m_Player_ChargeRelease;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_KeyboardHorizontal;
+    private readonly InputAction m_Player_KeyboardVertical;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -312,6 +343,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @ChargePress => m_Wrapper.m_Player_ChargePress;
         public InputAction @ChargeRelease => m_Wrapper.m_Player_ChargeRelease;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @KeyboardHorizontal => m_Wrapper.m_Player_KeyboardHorizontal;
+        public InputAction @KeyboardVertical => m_Wrapper.m_Player_KeyboardVertical;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -336,6 +369,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @KeyboardHorizontal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardHorizontal;
+                @KeyboardHorizontal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardHorizontal;
+                @KeyboardHorizontal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardHorizontal;
+                @KeyboardVertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardVertical;
+                @KeyboardVertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardVertical;
+                @KeyboardVertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyboardVertical;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -355,6 +394,12 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @KeyboardHorizontal.started += instance.OnKeyboardHorizontal;
+                @KeyboardHorizontal.performed += instance.OnKeyboardHorizontal;
+                @KeyboardHorizontal.canceled += instance.OnKeyboardHorizontal;
+                @KeyboardVertical.started += instance.OnKeyboardVertical;
+                @KeyboardVertical.performed += instance.OnKeyboardVertical;
+                @KeyboardVertical.canceled += instance.OnKeyboardVertical;
             }
         }
     }
@@ -384,5 +429,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnChargePress(InputAction.CallbackContext context);
         void OnChargeRelease(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnKeyboardHorizontal(InputAction.CallbackContext context);
+        void OnKeyboardVertical(InputAction.CallbackContext context);
     }
 }

@@ -75,7 +75,7 @@ public class FrogBoss : MonoBehaviour
 
     private Transform GetAttackLocation()
     {
-        int attackLocationNum = Random.Range(0, tongueAttackLocations.Length - 1);
+        int attackLocationNum = Random.Range(0, tongueAttackLocations.Length);
 
         return tongueAttackLocations[attackLocationNum];
     }

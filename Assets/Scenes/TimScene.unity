@@ -169,7 +169,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6228
+  m_Name: pb_Mesh-1950
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -332,7 +332,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6344
+  m_Name: pb_Mesh-2070
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -495,7 +495,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6256
+  m_Name: pb_Mesh-1980
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -718,7 +718,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6420
+  m_Name: pb_Mesh-2164
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -911,7 +911,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6302
+  m_Name: pb_Mesh-2014
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1288,7 +1288,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6320
+  m_Name: pb_Mesh-2046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1481,7 +1481,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6346
+  m_Name: pb_Mesh-2072
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2272,7 +2272,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6414
+  m_Name: pb_Mesh-2146
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2466,7 +2466,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6366
+  m_Name: pb_Mesh-2094
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2865,6 +2865,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isComplete: 0
   isActive: 0
+  grid: {fileID: 65002609}
+  projectilePrefab: {fileID: 5836571891961334807, guid: dbc78766539eb8f4a80827741f427d51,
+    type: 3}
+  numProjectiles: 100
+  projectileFireDelay: 0.25
+  waitAfterFiring: 5
+  dropHeight: 75
 --- !u!114 &1712429607
 MonoBehaviour:
   m_ObjectHideFlags: 0

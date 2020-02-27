@@ -9,6 +9,7 @@ public class Boss : MonoBehaviour
     private int currentBehaviourIndex = 0;
     private int totalbehaviours;
     private BossBehaviour currentBehaviour;
+    [HideInInspector] public bool atePoison = false;
 
     private void Awake()
     {
@@ -41,6 +42,26 @@ public class Boss : MonoBehaviour
         currentBehaviour.Reset();
         currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
         currentBehaviour = behaviourLoop[currentBehaviourIndex];
+
+        CheckBehaviourSkips();
+
         currentBehaviour.StartBehaviour();
+    }
+
+    private void CheckBehaviourSkips()
+    {
+        // If we are about to do the spit up attack, and a poison block has been eaten, instead skip to swell up
+        if (currentBehaviour.GetComponent<BossSpitUpAttack>() && atePoison)
+        {
+            atePoison = false;
+            currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
+            currentBehaviour = behaviourLoop[currentBehaviourIndex];
+        }
+        // If we have just spit up, we want to skip the swell up attack
+        else if (currentBehaviour.GetComponent<BossSwellUpAttack>())
+        {
+            currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
+            currentBehaviour = behaviourLoop[currentBehaviourIndex];
+        }
     }
 }

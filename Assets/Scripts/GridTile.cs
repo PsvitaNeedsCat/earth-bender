@@ -8,7 +8,8 @@ public enum GroundType
 {
     none,
     dirt,
-    rock
+    rock,
+    poison
 }
 
 public class GridTile : MonoBehaviour

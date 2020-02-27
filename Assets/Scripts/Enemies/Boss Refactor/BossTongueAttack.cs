@@ -6,6 +6,7 @@ public class BossTongueAttack : BossBehaviour
 {
     public Animator tongueAnimator;
     public BossTongueCollider tongueCollider;
+    public Boss bossScript;
     private bool isRetracting = false;
 
     public override void StartBehaviour()
@@ -41,7 +42,13 @@ public class BossTongueAttack : BossBehaviour
             Debug.Log("TongueAttack finished");
             tongueAnimator.gameObject.SetActive(false);
             tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
-            Debug.Log("Swallowed: " + tongueCollider.Swallow().ToString());
+
+            GroundType typeSwallowed = tongueCollider.Swallow();
+            if (typeSwallowed == GroundType.poison)
+            {
+                bossScript.atePoison = true;
+            }
+
             isComplete = true;
         }
     }

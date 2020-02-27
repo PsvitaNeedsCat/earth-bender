@@ -27,8 +27,10 @@ public class BossTongueCollider : MonoBehaviour
             {
                 // Pick up & eat chunk
                 chunk.Detach();
-                FixedJoint newJoint = gameObject.AddComponent<FixedJoint>();
-                newJoint.connectedBody = chunk.GetComponent<Rigidbody>();
+
+                chunk.transform.parent = this.transform;
+                chunk.GetComponent<Collider>().isTrigger = true;
+
                 attachedChunk = chunk;
                 tongueAttack.RetractTongue();
                 return;

@@ -44,6 +44,8 @@ public class BossTongueAttack : BossBehaviour
             tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
 
             GroundType typeSwallowed = tongueCollider.Swallow();
+            Debug.Log("Swallowed: " + typeSwallowed.ToString());
+
             if (typeSwallowed == GroundType.poison)
             {
                 bossScript.atePoison = true;

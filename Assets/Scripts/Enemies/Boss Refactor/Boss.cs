@@ -11,7 +11,8 @@ public class Boss : MonoBehaviour
     private BossBehaviour currentBehaviour;
     [HideInInspector] public bool atePoison = false;
     private bool didSpit = false;
-
+    [HideInInspector] public bool tookDamage = false;
+    [HideInInspector] public bool invincible = true;
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);

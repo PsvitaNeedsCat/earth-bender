@@ -9,7 +9,7 @@ public class Chunk : MonoBehaviour
     public GroundType type;
     public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
-    public static float damage = 10.0f;
+    public static int damage = 1;
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     [HideInInspector] public bool isRaised = false;
@@ -137,6 +137,20 @@ public class Chunk : MonoBehaviour
         if (collision.collider.tag != "Ground" && collision.collider.tag != "Player")
         {
             attemptingToStop = true;
+        }
+
+        Boss boss = collision.gameObject.GetComponent<Boss>();
+
+        if (boss)
+        {
+            if (!boss.tookDamage && !boss.invincible)
+            {
+                BossHealth health = collision.gameObject.GetComponent<BossHealth>();
+                health.Damage(damage);
+                
+            }
+
+            Destroy(this.gameObject);
         }
     }
 }

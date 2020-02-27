@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerHealth : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
-    private int health = 3;
+    public int health = 3;
+    private Boss bossScript;
+
+    private void Awake()
+    {
+        bossScript = GetComponent<Boss>();
+    }
 
     public int Health
     {
@@ -23,11 +28,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Death()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     public void Damage(int amount)
     {
         Health -= amount;
+        bossScript.tookDamage = true;
     }
+
 }

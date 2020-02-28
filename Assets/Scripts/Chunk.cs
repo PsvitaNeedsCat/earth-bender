@@ -29,15 +29,15 @@ public class Chunk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (attemptingToStop)
-        {
-            if (rigidBody.velocity == Vector3.zero)
-            {
-                attemptingToStop = false;
-                rigidBody.isKinematic = true;
-                Debug.Log("Stopped");
-            }
-        }
+        //if (attemptingToStop)
+        //{
+        //    if (rigidBody.velocity == Vector3.zero)
+        //    {
+        //        attemptingToStop = false;
+        //        rigidBody.isKinematic = true;
+        //        Debug.Log("Stopped");
+        //    }
+        //}
     }
 
     private void Awake()
@@ -117,13 +117,13 @@ public class Chunk : MonoBehaviour
         }
     }
 
-    private bool IsAgainstWall(Vector3 hitVec)
+    private bool IsAgainstWall(Vector3 hitVec, float distance = 5.5f)
     {
         Vector3 checkPosition = transform.position;
         checkPosition.y -= 4.5f; // Almost bottom of chunk
 
         // Raycast in the direction of hit vec for half a chunks length
-        if (Physics.Raycast(checkPosition, hitVec, 5.0f))
+        if (Physics.Raycast(checkPosition, hitVec, distance))
         {
             // Hit something, thus a wall
             return true;
@@ -136,7 +136,13 @@ public class Chunk : MonoBehaviour
     {
         if (collision.collider.tag != "Ground" && collision.collider.tag != "Player")
         {
-            attemptingToStop = true;
+            if (IsAgainstWall(rigidBody.velocity.normalized, 9.5f))
+            {
+                //attemptingToStop = true;
+                rigidBody.velocity = Vector3.zero;
+                rigidBody.isKinematic = true;
+                Debug.Log("Stopped");
+            }
         }
 
         Boss boss = collision.gameObject.GetComponent<Boss>();

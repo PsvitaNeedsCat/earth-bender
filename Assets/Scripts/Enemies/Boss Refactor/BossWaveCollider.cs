@@ -10,7 +10,7 @@ public class BossWaveCollider : MonoBehaviour
     public Vector3 waveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
     public LayerMask waveBlockingLayers;
     public float sphereCastDistance = 100.0f;
-    private bool damagedPlayer = false;
+    public bool damagedPlayer = false;
 
     private void OnTriggerStay(Collider other)
     {

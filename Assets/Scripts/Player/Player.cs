@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Vector2 playerDirection = new Vector2(0.0f, 0.0f);
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
+    private Animator playerAnimator;
     
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         controls = new InputMaster();
         controls.Player.Enable();
         m_rigidBody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
 
         playerController = GetComponent<PlayerController>();
 
@@ -32,10 +34,12 @@ public class Player : MonoBehaviour
         controls.Player.KeyboardHorizontal.performed += ctx => playerDirection.x = ctx.ReadValue<float>();
         controls.Player.KeyboardVertical.performed += ctx => playerDirection.y = ctx.ReadValue<float>();
         // Punch attack
-        controls.Player.AttackPress.performed += _ => AttemptPunch();
+        // controls.Player.AttackPress.performed += _ => AttemptPunch();
+        controls.Player.AttackPress.performed += _ => StartPunch();
         controls.Player.ChargePress.performed += _ => playerController.ActivateTileTargeter();
         controls.Player.ChargeRelease.performed += _ => playerController.DeactivateTileTargeter();
-        controls.Player.ChargeRelease.performed += _ => playerController.TryRaiseChunk();
+        // controls.Player.ChargeRelease.performed += _ => playerController.TryRaiseChunk();
+        controls.Player.ChargeRelease.performed += _ => StartRaiseChunk();
     }
 
     private void FixedUpdate()
@@ -59,6 +63,29 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StartPunch()
+    {
+        playerAnimator.SetTrigger("Punch");
+    }
+
+    public void StartRaiseChunk()
+    {
+        if (playerController.TryConfirmChunk())
+        {
+            playerAnimator.SetTrigger("Summon");
+        }
+    }
+
+    public void AEPunch()
+    {
+        AttemptPunch();
+    }
+
+    public void AERaiseChunk()
+    {
+        playerController.RaiseChunk();
+    }
+
     void AttemptPunch()
     {
         if (punchCooldown <= 0.0f)
@@ -67,5 +94,4 @@ public class Player : MonoBehaviour
             punchCooldown = punchCooldownMax;
         }
     }
-
 }

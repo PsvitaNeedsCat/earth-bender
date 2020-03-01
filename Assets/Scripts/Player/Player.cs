@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     // Public
     public float drag = 2.0f;
     public float punchCooldownMax = 1.0f;
+    public Animator playerAnimator;
 
     // Private
     InputMaster controls;
@@ -16,7 +17,6 @@ public class Player : MonoBehaviour
     Vector2 playerDirection = new Vector2(0.0f, 0.0f);
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
-    private Animator playerAnimator;
     private float playerGravity = -100.0f;
     
     private void Awake()
@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         controls = new InputMaster();
         controls.Player.Enable();
         m_rigidBody = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent<Animator>();
 
         playerController = GetComponent<PlayerController>();
 
@@ -63,7 +62,12 @@ public class Player : MonoBehaviour
     {
         if (Mathf.Abs(playerDirection.x) > 0.5f || Mathf.Abs(playerDirection.y) > 0.5f)
         {
+            playerAnimator.SetBool("Running", true);
             playerController.Move(playerDirection);
+        }
+        else
+        {
+            playerAnimator.SetBool("Running", false);
         }
     }
 

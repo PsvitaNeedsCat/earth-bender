@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
 {
     private int health = 3;
     [SerializeField] TextMeshProUGUI healthText;
+    public Animator playerAnimator;
 
-    private Animator playerAnimator;
     private bool isInvincible = false;
 
     public int Health
@@ -27,11 +27,6 @@ public class PlayerHealth : MonoBehaviour
                 Death();
             }
         }
-    }
-
-    private void Awake()
-    {
-        playerAnimator = GetComponent<Animator>();
     }
 
     private void Death()

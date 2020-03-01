@@ -13,9 +13,12 @@ public class BossSpitUpAttack : BossBehaviour
 
     // private List<BossSpitProjectile> projectiles = new List<BossSpitProjectile>();
     private Dictionary<int, GridTile> levelTiles = new Dictionary<int, GridTile>();
+    private Boss bossScript;
 
     private void Awake()
     {
+        bossScript = GetComponent<Boss>();
+
         GridTile[] gridTiles = grid.groundTiles;
 
         for (int i = 0; i < gridTiles.Length; i++)
@@ -43,6 +46,11 @@ public class BossSpitUpAttack : BossBehaviour
 
         yield return new WaitForSeconds(waitAfterFiring);
 
+        if (bossScript.ateRock)
+        {
+            bossScript.ateRock = false;
+        }
+
         isComplete = true;
     }
 
@@ -59,6 +67,8 @@ public class BossSpitUpAttack : BossBehaviour
         ProjectileCreated(aimTile);
 
         proj.rigidBody.AddForce(Vector3.up * 2.0f, ForceMode.Impulse);
+
+        if (bossScript.ateRock) { proj.rockEaten = true; }
 
         yield return new WaitForSeconds(0.5f);
 

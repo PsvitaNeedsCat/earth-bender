@@ -16,8 +16,7 @@ public class BossTongueAttack : BossBehaviour
         ExtendTongue();
 
         Debug.Log("Started tongue attack behaviour");
-
-        // StartCoroutine(CompleteAfterSeconds(3.0f));
+        
     }
     public override void Reset()
     {
@@ -49,6 +48,11 @@ public class BossTongueAttack : BossBehaviour
             if (typeSwallowed == GroundType.poison)
             {
                 bossScript.atePoison = true;
+            }
+
+            if (typeSwallowed == GroundType.dirt)
+            {
+                bossScript.ateRock = true;
             }
 
             isComplete = true;

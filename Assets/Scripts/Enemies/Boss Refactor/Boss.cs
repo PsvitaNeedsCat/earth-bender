@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     private int totalbehaviours;
     private BossBehaviour currentBehaviour;
     [HideInInspector] public bool atePoison = false;
+    [HideInInspector] public bool ateRock = false;
     private bool didSpit = false;
     [HideInInspector] public bool tookDamage = false;
     [HideInInspector] public bool invincible = true;

@@ -2505,26 +2505,6 @@ Transform:
   m_Father: {fileID: 1202976328}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
---- !u!1 &1712429601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8688862265814036573, guid: 8d7b85999f622724ea8fcf7620fa2e84,
-    type: 3}
-  m_PrefabInstance: {fileID: 8688862264305232508}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1712429602
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712429601}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1809738124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,15 +3048,5 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 65002609}
-    - target: {fileID: 8688862265814036570, guid: 8d7b85999f622724ea8fcf7620fa2e84,
-        type: 3}
-      propertyPath: numProjectiles
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8688862265814036574, guid: 8d7b85999f622724ea8fcf7620fa2e84,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d7b85999f622724ea8fcf7620fa2e84, type: 3}

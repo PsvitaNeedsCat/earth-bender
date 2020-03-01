@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Vector2 playerDirection = new Vector2(0.0f, 0.0f);
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
+    private float playerGravity = -100.0f;
     
     private void Awake()
     {
@@ -47,6 +48,9 @@ public class Player : MonoBehaviour
         vel.x *= (0.98f / drag);
         vel.z *= (0.98f / drag);
         m_rigidBody.velocity = vel;
+
+        // Manual gravity
+        m_rigidBody.AddForce(Vector3.up * playerGravity);
 
         if (punchCooldown > 0.0f) punchCooldown -= Time.fixedDeltaTime;
     }

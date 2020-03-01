@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using TMPro;
+
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 3;
+    private int health = 3;
+    [SerializeField] TextMeshProUGUI healthText;
 
     public int Health
     {
@@ -13,11 +16,13 @@ public class PlayerHealth : MonoBehaviour
         set
         {
             health = value;
+
+            if (healthText) { healthText.text = "Health: " + health; }
+
             if (health <= 0)
             {
                 Death();
             }
-
         }
     }
 

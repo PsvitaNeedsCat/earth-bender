@@ -8,7 +8,7 @@
 		[Space]
 		[Header(SHADOWS)]
 		_ShadowThresh("Shadow Threshold", Range(0, 2)) = 1
-		_ShadowSmooth("Shadow Smoothness", Range(0.7, 1.5)) = 0.6
+		_ShadowSmooth("Shadow Smoothness", Range(0.5, 1.5)) = 0.6
 		[HDR]_ShadowColor("Shadow Color", Color) = (0, 0, 0, 1)
 	}
 		SubShader

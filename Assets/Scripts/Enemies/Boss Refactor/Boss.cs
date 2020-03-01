@@ -9,9 +9,13 @@ public class Boss : MonoBehaviour
     private int currentBehaviourIndex = 0;
     private int totalbehaviours;
     private BossBehaviour currentBehaviour;
-
+    [HideInInspector] public bool atePoison = false;
+    private bool didSpit = false;
+    [HideInInspector] public bool tookDamage = false;
+    [HideInInspector] public bool invincible = true;
     private void Awake()
     {
+        Random.InitState((int)System.DateTime.Now.Ticks);
         Debug.Assert(behaviourLoop.Count > 0, "No behaviours in behaviour loop");
         totalbehaviours = behaviourLoop.Count;
     }
@@ -40,6 +44,35 @@ public class Boss : MonoBehaviour
         currentBehaviour.Reset();
         currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
         currentBehaviour = behaviourLoop[currentBehaviourIndex];
+
+        CheckBehaviourSkips();
+
         currentBehaviour.StartBehaviour();
+    }
+
+    private void CheckBehaviourSkips()
+    {
+        // If we are about to do the spit up attack, and a poison block has been eaten, instead skip to swell up
+        if (currentBehaviour is BossSpitUpAttack)
+        {
+            if (atePoison)
+            {
+                atePoison = false;
+                currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
+                currentBehaviour = behaviourLoop[currentBehaviourIndex];
+            }
+            else
+            {
+                didSpit = true;
+            }
+            
+        }
+        // If we have just spit up, we want to skip the swell up attack
+        else if (currentBehaviour is BossSwellUpAttack && didSpit)
+        {
+            didSpit = false;
+            currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
+            currentBehaviour = behaviourLoop[currentBehaviourIndex];
+        }
     }
 }

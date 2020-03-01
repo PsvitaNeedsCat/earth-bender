@@ -5,12 +5,17 @@ using UnityEngine;
 public abstract class BossBehaviour : MonoBehaviour
 {
     [HideInInspector] public bool isComplete = false;
+    [HideInInspector] public bool isActive = false;
 
-    public abstract void StartBehaviour();
+    public virtual void StartBehaviour()
+    {
+        isActive = true;
+    }
 
     public virtual void Reset()
     {
         isComplete = false;
+        isActive = false;
     }
 
     protected IEnumerator CompleteAfterSeconds(float afterSeconds)

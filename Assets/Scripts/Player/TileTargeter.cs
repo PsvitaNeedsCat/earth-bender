@@ -20,7 +20,7 @@ public class TileTargeter : MonoBehaviour
         GridTile closest = levelGrid.FindClosestTile(transform.position);
 
         // If the closest tile is within range
-        if ((closest.transform.position - transform.position).magnitude < checkRange)
+        if ((closest.transform.position - transform.position).magnitude < checkRange && !closest.IsOccupied())
         {
             targetIndicator.SetActive(true);
             targetIndicator.transform.position = closest.transform.position;

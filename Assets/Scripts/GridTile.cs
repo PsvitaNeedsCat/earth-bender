@@ -16,9 +16,9 @@ public class GridTile : MonoBehaviour
 {
     public GroundType type = GroundType.dirt;
     public GameObject chunkPrefab;
-       
+    public LayerMask raycastLayerMask;
+
     private static float tileSize = 10.0f;
-    private Chunk chunk;
 
     private void Awake()
     {
@@ -36,15 +36,14 @@ public class GridTile : MonoBehaviour
     public void TryRaiseChunk()
     {
         // Don't try to raise a chunk if there's already one here
-        if (chunk) { return; }
+        if (IsOccupied()) { return; }
 
-        chunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
+        Chunk chunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
         chunk.RaiseChunk();
-        chunk.owningTile = this;
     }
 
-    public void RemoveChunk()
+    public bool IsOccupied()
     {
-        chunk = null;
+        return Physics.Raycast(transform.position, Vector3.up, tileSize, raycastLayerMask);
     }
 }

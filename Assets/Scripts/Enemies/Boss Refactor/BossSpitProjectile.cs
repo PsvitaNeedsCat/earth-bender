@@ -12,6 +12,7 @@ public class BossSpitProjectile : MonoBehaviour
     public GameObject hurtboxPrefab;
 
     private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
+    private bool isQuitting = false;
 
     private void Awake()
     {
@@ -21,7 +22,13 @@ public class BossSpitProjectile : MonoBehaviour
     private void OnDestroy()
     {
         if (isFragment) { return; }
+        if (isQuitting) { return; }
         spitUpAttack.ProjectileDestroyed(aimedTile);
+    }
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 
     private void OnCollisionEnter(Collision collision)

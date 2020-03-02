@@ -79,18 +79,26 @@ public class PlayerController : MonoBehaviour
     public bool TryConfirmChunk()
     {
         GridTile tile = tileTargeter.GetComponent<TileTargeter>().GetClosest();
-        bool tileFree = !tile.IsOccupied();
-
-        if (tileFree)
+        
+        if (tile)
         {
-            confirmedTile = tile;
+            bool tileFree = !tile.IsOccupied();
+
+            if (tileFree)
+            {
+                confirmedTile = tile;
+            }
+            else
+            {
+                confirmedTile = null;
+            }
+
+            return tileFree;
         }
         else
         {
-            confirmedTile = null;
+            return false;
         }
-
-        return tileFree;
     }
 
     public void RaiseChunk()

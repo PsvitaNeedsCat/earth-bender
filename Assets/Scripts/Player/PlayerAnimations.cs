@@ -26,4 +26,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         playerHealth.AEStopInvincibility();
     }
+
+    public void AEEnableMovement()
+    {
+        playerScript.AEEnableMovement();
+    }
+
+    public void AEDisableMovement()
+    {
+        playerScript.AEDisableMovement();
+    }
 }

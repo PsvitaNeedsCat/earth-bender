@@ -73,6 +73,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlankFloorTile
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3895855595473161120, guid: 8a5ca5a678106434ea9a50ecf6476c1d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a5ca5a678106434ea9a50ecf6476c1d, type: 3}

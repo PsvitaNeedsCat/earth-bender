@@ -115,6 +115,20 @@ CapsuleCollider:
   m_Height: 10.084193
   m_Direction: 1
   m_Center: {x: 0, y: 4.9579034, z: 0}
+--- !u!114 &772798654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924196396392705897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a42e7f30f6d034e8ba9c1c22a23f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 91581382168510932}
+  playerHealth: {fileID: 1571418952853222337}
 --- !u!1001 &646530710617831008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -854,6 +868,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a155a03c239ca34dbeaa0c8ed70ad09, type: 3}
+--- !u!1 &8924196396392705897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2a155a03c239ca34dbeaa0c8ed70ad09,
+    type: 3}
+  m_PrefabInstance: {fileID: 646530710617831008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5585101873147813242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2a155a03c239ca34dbeaa0c8ed70ad09,
@@ -986,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
@@ -1033,9 +1053,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileTargeter
       objectReference: {fileID: 0}
+    - target: {fileID: 6703264857958518697, guid: 23973c31990eb5a45bcc645832296b14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6703264857958518699, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: checkRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703264857958518699, guid: 23973c31990eb5a45bcc645832296b14,
+        type: 3}
+      propertyPath: maxRange
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

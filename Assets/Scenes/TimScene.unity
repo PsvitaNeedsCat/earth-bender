@@ -163,30 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ba3e757e8fac544bbac2e360dcb9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &132948760 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1571418952853222337, guid: d8c7dd7845e406a418f9b82084b95b6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2078787995}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b059299e85b7614898a09487bab3923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &132948762 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 91581382168510932, guid: d8c7dd7845e406a418f9b82084b95b6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2078787995}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab4a538e0af8ce45ac6f0669596bdde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &157823975
 Mesh:
   m_ObjectHideFlags: 0
@@ -1244,26 +1220,6 @@ Transform:
   m_Father: {fileID: 1202976328}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
---- !u!1 &772798653 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8924196396392705897, guid: d8c7dd7845e406a418f9b82084b95b6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2078787995}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &772798654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772798653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a42e7f30f6d034e8ba9c1c22a23f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerScript: {fileID: 132948762}
-  playerHealth: {fileID: 132948760}
 --- !u!1 &825830050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,21 +2602,10 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 65002609}
-    - target: {fileID: 91581382168510933, guid: d8c7dd7845e406a418f9b82084b95b6f,
-        type: 3}
-      propertyPath: hurtBoxPrefab
-      value: 
-      objectReference: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
-        type: 3}
     - target: {fileID: 91581382168510938, guid: d8c7dd7845e406a418f9b82084b95b6f,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3816267807807297370, guid: d8c7dd7845e406a418f9b82084b95b6f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c7dd7845e406a418f9b82084b95b6f, type: 3}

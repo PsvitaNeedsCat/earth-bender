@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public bool TryConfirmChunk()
     {
-        GridTile tile = grid.FindClosestTile(transform.position + transform.forward * 10.0f);
+        GridTile tile = tileTargeter.GetComponent<TileTargeter>().GetClosest();
         bool tileFree = !tile.IsOccupied();
 
         if (tileFree)

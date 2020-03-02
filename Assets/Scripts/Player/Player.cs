@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
     private float playerGravity = -100.0f;
+    private bool moveDisabled = false;
     
     private void Awake()
     {
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (Mathf.Abs(playerDirection.x) > 0.5f || Mathf.Abs(playerDirection.y) > 0.5f)
+        if ((Mathf.Abs(playerDirection.x) > 0.5f || Mathf.Abs(playerDirection.y) > 0.5f) && !moveDisabled)
         {
             playerAnimator.SetBool("Running", true);
             playerController.Move(playerDirection);
@@ -73,11 +74,15 @@ public class Player : MonoBehaviour
 
     public void StartPunch()
     {
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Punch")) { return; }
+
         playerAnimator.SetTrigger("Punch");
     }
 
     public void StartRaiseChunk()
     {
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Summon")) { return; }
+
         if (playerController.TryConfirmChunk())
         {
             playerAnimator.SetTrigger("Summon");
@@ -86,6 +91,7 @@ public class Player : MonoBehaviour
 
     public void AEPunch()
     {
+        
         AttemptPunch();
     }
 
@@ -101,5 +107,15 @@ public class Player : MonoBehaviour
             playerController.Punch();
             punchCooldown = punchCooldownMax;
         }
+    }
+
+    public void AEEnableMovement()
+    {
+        moveDisabled = false;
+    }
+
+    public void AEDisableMovement()
+    {
+        moveDisabled = true;
     }
 }

@@ -35,6 +35,8 @@ public class GridTile : MonoBehaviour
 
     public void TryRaiseChunk()
     {
+        if (type == GroundType.none) { return; }
+
         // Don't try to raise a chunk if there's already one here
         if (IsOccupied()) { return; }
 
@@ -44,6 +46,7 @@ public class GridTile : MonoBehaviour
 
     public bool IsOccupied()
     {
+        if (type == GroundType.none) { return true; }
         return Physics.Raycast(transform.position, Vector3.up, tileSize, raycastLayerMask);
     }
 }

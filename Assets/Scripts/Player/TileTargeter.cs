@@ -5,8 +5,10 @@ using UnityEngine;
 public class TileTargeter : MonoBehaviour
 {
     private LevelGrid levelGrid;
-    public float checkRange = 5.0f; // center of blocks needs to be within range
+    public float maxRange = 5.0f; // center of blocks needs to be within range
     public GameObject targetIndicator;
+
+    private GridTile closest;
 
     private void Awake()
     {
@@ -17,10 +19,10 @@ public class TileTargeter : MonoBehaviour
 
     private void Update()
     {
-        GridTile closest = levelGrid.FindClosestTile(transform.position);
+        closest = levelGrid.FindClosestTile(transform.position);
 
         // If the closest tile is within range
-        if ((closest.transform.position - transform.position).magnitude < checkRange && !closest.IsOccupied())
+        if ((closest.transform.position - transform.position).magnitude < maxRange && !closest.IsOccupied())
         {
             targetIndicator.SetActive(true);
             targetIndicator.transform.position = closest.transform.position;
@@ -32,11 +34,14 @@ public class TileTargeter : MonoBehaviour
         }
     }
 
-
+    public GridTile GetClosest()
+    {
+        return closest;
+    }
 
     private void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) { return; }
-        Gizmos.DrawWireSphere(transform.position, checkRange);
+        Gizmos.DrawWireSphere(transform.position, maxRange);
     }
 }

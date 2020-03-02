@@ -10,11 +10,13 @@ public class TileTargeter : MonoBehaviour
 
     private GridTile closest;
 
-    private void Awake()
+    private void OnEnable()
     {
-        levelGrid = FindObjectOfType<LevelGrid>();
-
-        Debug.Assert(levelGrid, "TileTargeter failed to find a level grid");
+        if (!levelGrid)
+        {
+            levelGrid = FindObjectOfType<LevelGrid>();
+            Debug.Assert(levelGrid, "TileTargeter failed to find a level grid");
+        }
     }
 
     private void Update()

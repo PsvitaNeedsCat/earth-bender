@@ -27,19 +27,6 @@ public class Chunk : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //if (attemptingToStop)
-        //{
-        //    if (rigidBody.velocity == Vector3.zero)
-        //    {
-        //        attemptingToStop = false;
-        //        rigidBody.isKinematic = true;
-        //        Debug.Log("Stopped");
-        //    }
-        //}
-    }
-
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -139,10 +126,7 @@ public class Chunk : MonoBehaviour
         {
             if (IsAgainstWall(rigidBody.velocity.normalized, 9.5f))
             {
-                //attemptingToStop = true;
-                rigidBody.velocity = Vector3.zero;
-                rigidBody.isKinematic = true;
-                Debug.Log("Stopped");
+                SnapChunk();
             }
         }
 
@@ -159,5 +143,23 @@ public class Chunk : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    void SnapChunk()
+    {
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.isKinematic = true;
+        Debug.Log("Stopped");
+
+        // Snap chunk to nearest tile //
+
+        // Find nearest tile
+        GridTile nearest = GameObject.FindObjectOfType<LevelGrid>().FindClosestTile(transform.position);
+
+        // Snap to the nearest tile's position
+        Vector3 newPos = transform.position;
+        newPos.x = nearest.transform.position.x;
+        newPos.z = nearest.transform.position.z;
+        transform.position = newPos;
     }
 }

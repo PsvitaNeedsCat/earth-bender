@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    // Singleton
+    private static SceneController _pSceneController;
+    public static SceneController Instance {  get { return _pSceneController; } }
+
     // Public
     public string[] sceneNames;
     public int initialScene;
@@ -13,10 +17,22 @@ public class SceneController : MonoBehaviour
     // Private
     private int loadThisScene = 0;
     private List<int> loadedScenes = new List<int>();
-    private const int maxScenesLoaded = 3;
+    private const int maxScenesLoaded = 1;
 
     private void Awake()
     {
+        // Singleton
+        if (_pSceneController != null && !_pSceneController != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _pSceneController = this;
+        }
+
+        Debug.Log("Load initial scene: " + sceneNames[initialScene - 1]);
+
         // Load first scene
         LoadAsyncScene(initialScene - 1);
 
@@ -24,10 +40,12 @@ public class SceneController : MonoBehaviour
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
-    private void SceneManager_sceneLoaded(Scene loadedSceneName, LoadSceneMode sceneMode)
+    private void SceneManager_sceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
     {
+        Debug.Log("Scene successfully loaded: " + loadedScene.name);
+
         // Don't make the main scene the main scene
-        if (loadedSceneName.name != "MainScene")
+        if (loadedScene.name != "MainScene")
         {
             // Set new scene as active
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));
@@ -36,11 +54,16 @@ public class SceneController : MonoBehaviour
 
     public void LoadAsyncScene(int sceneIndex)
     {
+        Debug.Log("Attempting to load scene: " + sceneNames[sceneIndex]);
+
+        // If loaded scene is currently active, return
+        if (SceneManager.GetActiveScene().name == sceneNames[sceneIndex]) { return; }
+
         // Reached max scenes loaded
         if (loadedScenes.Count >= maxScenesLoaded)
         {
             // Unloads scene
-            SceneManager.UnloadSceneAsync(loadedScenes[0]);
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(sceneNames[loadedScenes[0]]));
             // Removes it from the list
             loadedScenes.RemoveAt(0);
         }

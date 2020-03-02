@@ -143,7 +143,15 @@ public class Chunk : MonoBehaviour
         rigidBody.isKinematic = true;
         Debug.Log("Stopped");
 
-        // Snap chunk to nearest tile
+        // Snap chunk to nearest tile //
 
+        // Find nearest tile
+        GridTile nearest = GameObject.FindObjectOfType<LevelGrid>().FindClosestTile(transform.position);
+
+        // Snap to the nearest tile's position
+        Vector3 newPos = transform.position;
+        newPos.x = nearest.transform.position.x;
+        newPos.z = nearest.transform.position.z;
+        transform.position = newPos;
     }
 }

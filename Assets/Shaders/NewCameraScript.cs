@@ -4,12 +4,21 @@
 public class NewCameraScript : MonoBehaviour
 {
 
-    private Camera cam;
+    [SerializeField]
+    DepthTextureMode depthTextureMode;
 
-    void Start()
+    private void OnValidate()
     {
-        cam = GetComponent<Camera>();
-        cam.depthTextureMode = DepthTextureMode.Depth;
+        SetCameraDepthTextureMode();
     }
 
+    private void Awake()
+    {
+        SetCameraDepthTextureMode();
+    }
+
+    private void SetCameraDepthTextureMode()
+    {
+        GetComponent<Camera>().depthTextureMode = depthTextureMode;
+    }
 }

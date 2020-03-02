@@ -47,6 +47,9 @@ MonoBehaviour:
   type: 0
   chunkPrefab: {fileID: 2594967792810334164, guid: c58133422a77d1841aa36fe170357958,
     type: 3}
+  raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &3895855594871720225
 PrefabInstance:
   m_ObjectHideFlags: 0

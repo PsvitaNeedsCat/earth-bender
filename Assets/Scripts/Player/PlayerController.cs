@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     // Private
     private Rigidbody m_rigidBody;
     private List<Chunk> activeChunks;
+    private GridTile confirmedTile;
 
     // Temp
     public LevelGrid grid;
@@ -75,11 +76,27 @@ public class PlayerController : MonoBehaviour
         tileTargeter.SetActive(false);
     }
 
-    public void TryRaiseChunk()
+    public bool TryConfirmChunk()
     {
-        // Debug.Log("Trying raise chunk");
-        GridTile tile = grid.FindClosestTile(transform.position + transform.forward * 10.0f);
-        tile.TryRaiseChunk();
+        GridTile tile = tileTargeter.GetComponent<TileTargeter>().GetClosest();
+        bool tileFree = !tile.IsOccupied();
+
+        if (tileFree)
+        {
+            confirmedTile = tile;
+        }
+        else
+        {
+            confirmedTile = null;
+        }
+
+        return tileFree;
+    }
+
+    public void RaiseChunk()
+    {
+        confirmedTile.TryRaiseChunk();
+        confirmedTile = null;
     }
 
     public void AddChunk(Chunk newChunk)

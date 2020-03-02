@@ -5,7 +5,13 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: chara_Idle
+    second: Idle
+  - first:
+      74: -3544656171116459239
+    second: Idle
+  - first:
+      74: -3544656171116459239
+    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -35,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: chara_Idle
+      name: Idle
       takeName: Take 001
       internalID: 0
       firstFrame: 32
@@ -46,8 +52,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

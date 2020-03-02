@@ -13,7 +13,6 @@ public class Chunk : MonoBehaviour
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     [HideInInspector] public bool isRaised = false;
-    [HideInInspector] public GridTile owningTile;
 
     private bool attemptingToStop = false;
     private int health = 2;
@@ -25,19 +24,6 @@ public class Chunk : MonoBehaviour
             health = value;
             if (health <= 0) { Death(); }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        //if (attemptingToStop)
-        //{
-        //    if (rigidBody.velocity == Vector3.zero)
-        //    {
-        //        attemptingToStop = false;
-        //        rigidBody.isKinematic = true;
-        //        Debug.Log("Stopped");
-        //    }
-        //}
     }
 
     private void Awake()
@@ -79,7 +65,6 @@ public class Chunk : MonoBehaviour
     private void OnDestroy()
     {
         transform.DOKill();
-        if (owningTile) { owningTile.RemoveChunk(); }
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
         AudioManager.Instance.PlaySound("RockDestroy");
     }
@@ -110,11 +95,6 @@ public class Chunk : MonoBehaviour
         Debug.Log("Detach");
         rigidBody.isKinematic = false;
         rigidBody.drag = 0.0f;
-        if (owningTile)
-        {
-            owningTile.RemoveChunk();
-            owningTile = null;
-        }
     }
 
     private bool IsAgainstWall(Vector3 hitVec, float distance = 5.5f)
@@ -138,10 +118,7 @@ public class Chunk : MonoBehaviour
         {
             if (IsAgainstWall(rigidBody.velocity.normalized, 9.5f))
             {
-                //attemptingToStop = true;
-                rigidBody.velocity = Vector3.zero;
-                rigidBody.isKinematic = true;
-                Debug.Log("Stopped");
+                SnapChunk();
             }
         }
 
@@ -158,5 +135,23 @@ public class Chunk : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    void SnapChunk()
+    {
+        rigidBody.velocity = Vector3.zero;
+        rigidBody.isKinematic = true;
+        Debug.Log("Stopped");
+
+        // Snap chunk to nearest tile //
+
+        // Find nearest tile
+        GridTile nearest = GameObject.FindObjectOfType<LevelGrid>().FindClosestTile(transform.position);
+
+        // Snap to the nearest tile's position
+        Vector3 newPos = transform.position;
+        newPos.x = nearest.transform.position.x;
+        newPos.z = nearest.transform.position.z;
+        transform.position = newPos;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class BossSwampAttack : BossBehaviour
 {
@@ -8,12 +9,14 @@ public class BossSwampAttack : BossBehaviour
     public Animator waveAnimator;
     public GameObject waveObject;
     private BossWaveCollider waveCollider;
+    private CinemachineImpulseSource cameraShake;
 
     // Move a box collider over the whole level
     // If the player is hit, raycast to check if they were guarded by a block
     private void Awake()
     {
         waveCollider = waveObject.GetComponent<BossWaveCollider>();
+        cameraShake = GetComponent<CinemachineImpulseSource>();
     }
 
     public override void StartBehaviour()
@@ -41,6 +44,7 @@ public class BossSwampAttack : BossBehaviour
 
     public void WaveComplete()
     {
+        cameraShake.GenerateImpulse();
         waveObject.SetActive(false);
         isComplete = true;
     }

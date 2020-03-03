@@ -20,11 +20,6 @@ public class GridTile : MonoBehaviour
 
     private static float tileSize = 10.0f;
 
-    private void Awake()
-    {
-
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (type == GroundType.dirt) { Gizmos.color = Color.cyan; }
@@ -42,6 +37,13 @@ public class GridTile : MonoBehaviour
 
         Chunk chunk = Instantiate(chunkPrefab, transform.position, transform.rotation, null).GetComponent<Chunk>();
         chunk.RaiseChunk();
+
+        GameObject effect = EffectsManager.Instance.SpawnEffect("RockSummon");
+        effect.transform.position = chunk.transform.position;
+        // effect.transform.rotation = chunk.transform.rotation;
+        effect.transform.localScale = chunk.transform.localScale * 2.0f;
+        effect.transform.parent = chunk.transform;
+        
     }
 
     public bool IsOccupied()

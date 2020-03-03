@@ -33,6 +33,7 @@ public class TileTargeter : MonoBehaviour
         else
         {
             targetIndicator.SetActive(false);
+            closest = null;
         }
     }
 

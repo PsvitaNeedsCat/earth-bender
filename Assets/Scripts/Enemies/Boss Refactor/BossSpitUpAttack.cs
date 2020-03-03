@@ -18,8 +18,11 @@ public class BossSpitUpAttack : BossBehaviour
     private void Awake()
     {
         bossScript = GetComponent<Boss>();
+    }
 
-        GridTile[] gridTiles = grid.groundTiles;
+    private void Start()
+    {
+        GridTile[] gridTiles = grid.GroundTiles;
 
         for (int i = 0; i < gridTiles.Length; i++)
         {

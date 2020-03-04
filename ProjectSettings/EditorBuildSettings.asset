@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TimScene.unity
-    guid: ca2b3d9481e75574d8c8700fb1ba4fdd
+    path: Assets/Scenes/Menu.unity
+    guid: 600ab97c5d3c4ca4ab1367de1eba138b
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 05d72e19bf34ad740ab8584eb9b02b53
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 39e199e18126cc04d9023021b3bf612c
@@ -17,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 6ed092701ebd9164f8d46ab9a59f67e3
+  - enabled: 1
+    path: Assets/Scenes/TimScene.unity
+    guid: ca2b3d9481e75574d8c8700fb1ba4fdd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2c508f3b5052c25428849e5436340d91,
       type: 2}

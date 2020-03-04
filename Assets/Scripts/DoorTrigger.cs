@@ -25,7 +25,5 @@ public class DoorTrigger : MonoBehaviour
 
         // Load next level
         GameObject.FindObjectOfType<SceneController>().LoadNextLevel();
-
-        _fade.SetTrigger("FadeIn");
     }
 }

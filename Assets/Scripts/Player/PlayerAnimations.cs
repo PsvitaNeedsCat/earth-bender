@@ -17,15 +17,15 @@ public class PlayerAnimations : MonoBehaviour
         playerScript.AERaiseChunk();
     }
 
-    public void AEStartInvincibility()
-    {
-        playerHealth.AEStartInvincibility();
-    }
+    //public void AEStartInvincibility()
+    //{
+    //    playerHealth.AEStartInvincibility();
+    //}
 
-    public void AEStopInvincibility()
-    {
-        playerHealth.AEStopInvincibility();
-    }
+    //public void AEStopInvincibility()
+    //{
+    //    playerHealth.AEStopInvincibility();
+    //}
 
     public void AEEnableMovement()
     {

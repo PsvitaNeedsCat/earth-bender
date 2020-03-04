@@ -18,9 +18,12 @@ public class SceneController : MonoBehaviour
     private int loadThisScene = 0;
     private List<int> loadedScenes = new List<int>();
     private const int maxScenesLoaded = 1;
+    private int currentLevel;
 
     private void Awake()
     {
+        currentLevel = initialScene;
+
         // Singleton
         if (_pSceneController != null && !_pSceneController != this)
         {
@@ -73,5 +76,12 @@ public class SceneController : MonoBehaviour
         // Loads the new scene
         SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Additive);
         loadThisScene = sceneIndex;
+    }
+
+    public void LoadNextLevel()
+    {
+        LoadAsyncScene(currentLevel);
+
+        currentLevel += 1;
     }
 }

@@ -23,6 +23,7 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        
         currentBehaviour = behaviourLoop[0];
         currentBehaviour.StartBehaviour();
     }

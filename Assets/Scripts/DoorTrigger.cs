@@ -13,6 +13,13 @@ public class DoorTrigger : MonoBehaviour
 
         Animator _fade = GameObject.Find("Fade").GetComponent<Animator>();
 
+        // Set chunks to quitting so they don't trigger errors
+        Chunk[] chunks = GameObject.FindObjectsOfType<Chunk>();
+        for (int i = 0; i < chunks.Length; i++)
+        {
+            chunks[i].isQuitting = true;
+        }
+
         // Fade to black
         _fade.SetTrigger("FadeOut");
 

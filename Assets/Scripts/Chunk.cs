@@ -13,10 +13,10 @@ public class Chunk : MonoBehaviour
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     [HideInInspector] public bool isRaised = false;
+    [HideInInspector] public bool isQuitting = false;
 
     private bool attemptingToStop = false;
     private int health = 2;
-    private bool isQuitting = false;
     public int Health
     {
         get { return health; }

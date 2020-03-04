@@ -6,7 +6,17 @@ using UnityEngine;
 
 public class LevelGrid : MonoBehaviour
 {
-    public GridTile[] groundTiles;
+    private GridTile[] groundTiles;
+
+    public GridTile[] GroundTiles
+    {
+        get { return groundTiles; }
+    }
+
+    private void Awake()
+    {
+        groundTiles = FindObjectsOfType<GridTile>();
+    }
 
     public GridTile FindClosestTile(Vector3 queryPosition)
     {

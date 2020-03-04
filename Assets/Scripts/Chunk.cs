@@ -16,6 +16,7 @@ public class Chunk : MonoBehaviour
 
     private bool attemptingToStop = false;
     private int health = 2;
+    private bool isQuitting = false;
     public int Health
     {
         get { return health; }
@@ -34,6 +35,11 @@ public class Chunk : MonoBehaviour
 
         FindObjectOfType<PlayerController>().AddChunk(this); // ew
         AudioManager.Instance.PlaySound("RockCall");
+    }
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 
     public void RaiseChunk()
@@ -64,6 +70,8 @@ public class Chunk : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (isQuitting) { return; }
+
         transform.DOKill();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
         AudioManager.Instance.PlaySound("RockDestroy");

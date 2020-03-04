@@ -1,13 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[System.Serializable]
-public struct SoundEffect
-{
-    public string name;
-    public AudioClip clip;
-}
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
@@ -15,30 +9,21 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager Instance { get { return _instance; } }
 
-    public SoundEffect[] soundEffects;
-    public Dictionary<string, AudioClip> soundDictionary;
+    public string soundEffectsPath;
+
+    private Dictionary<string, AudioClip> soundDictionary;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        if (_instance != null && _instance != this) { Destroy(this.gameObject); }
+        else { _instance = this; }
 
         soundDictionary = new Dictionary<string, AudioClip>();
+        AudioClip[] audioClips = Resources.LoadAll(soundEffectsPath, typeof(AudioClip)).Cast<AudioClip>().ToArray();
 
-        LoadSounds();
-    }
-
-    private void LoadSounds()
-    {
-        for (int i = 0; i < soundEffects.Length; i++)
+        for (int i = 0; i < audioClips.Length; i++)
         {
-            soundDictionary.Add(soundEffects[i].name, soundEffects[i].clip);
+            soundDictionary.Add(audioClips[i].name, audioClips[i]);
         }
     }
 

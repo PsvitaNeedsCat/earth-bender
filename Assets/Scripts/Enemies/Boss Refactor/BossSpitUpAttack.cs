@@ -34,27 +34,19 @@ public class BossSpitUpAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        Debug.Log("Started spit up attack behaviour");
-        StartCoroutine(SpitProjectiles());
+        // Debug.Log("Started spit up attack behaviour");
+        // StartCoroutine(SpitProjectiles());
+        playerAnimator.SetTrigger("Spit");
     }
 
-    private IEnumerator SpitProjectiles()
+    private void SpittingFinished()
     {
-        // Modify projectiles if rocks have been eaten
-        for (int i = 0; i < numProjectiles; i++)
-        {
-            yield return new WaitForSeconds(projectileFireDelay);
-            StartCoroutine(SpitProjectile());
-        }
-
-        yield return new WaitForSeconds(waitAfterFiring);
-
         if (bossScript.ateRock)
         {
             bossScript.ateRock = false;
         }
 
-        isComplete = true;
+        // isComplete = true;
     }
 
     private IEnumerator SpitProjectile()
@@ -101,5 +93,15 @@ public class BossSpitUpAttack : BossBehaviour
     public void ProjectileDestroyed(GridTile tile)
     {
         levelTiles.Add(tile.GetInstanceID(), tile);
+    }
+
+    public void AESpitProjectile()
+    {
+        SpitProjectile();
+    }
+
+    public void AESpittingFinished()
+    {
+        SpittingFinished();
     }
 }

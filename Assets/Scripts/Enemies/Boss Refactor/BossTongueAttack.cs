@@ -13,9 +13,10 @@ public class BossTongueAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        ExtendTongue();
+        // ExtendTongue();
 
-        Debug.Log("Started tongue attack behaviour");
+
+        playerAnimator.SetTrigger("TongueAttack");
         
     }
     public override void Reset()
@@ -34,13 +35,19 @@ public class BossTongueAttack : BossBehaviour
             {
                 tongueAnimator.SetTrigger("Retract");
             }
+
+            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Toad_TongueAttack_Open") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.01f)
+            {
+                playerAnimator.SetTrigger("TongueRetract");
+            }
         }
 
-        if (tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("BossTongueIdle"))
+        if (tongueAnimator.gameObject.activeSelf && tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("BossTongueIdle"))
         {
             Debug.Log("TongueAttack finished");
             tongueAnimator.gameObject.SetActive(false);
             tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
+            playerAnimator.SetFloat("TongueExtendDirection", 1.0f);
 
             GroundType typeSwallowed = tongueCollider.Swallow();
             Debug.Log("Swallowed: " + typeSwallowed.ToString());
@@ -55,11 +62,9 @@ public class BossTongueAttack : BossBehaviour
                 bossScript.ateRock = true;
             }
 
-            isComplete = true;
+            // isComplete = true;
         }
     }
-
-    
 
     private void ExtendTongue()
     {
@@ -73,10 +78,18 @@ public class BossTongueAttack : BossBehaviour
         if (tongueAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
         {
             Debug.Log("Tried to retract tongue after halfway, not reversing animation");
+            playerAnimator.SetTrigger("TongueAttackFinished");
             return;
         }
 
         tongueAnimator.SetFloat("TongueExtendDirection", -1.0f);
+        playerAnimator.SetFloat("TongueExtendDirection", -1.0f);
+
         isRetracting = true;
+    }
+
+    public void AEExtendTongue()
+    {
+        ExtendTongue();
     }
 }

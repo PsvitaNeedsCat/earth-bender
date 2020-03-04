@@ -16,6 +16,7 @@ public class BossTongueCollider : MonoBehaviour
         {
             playerHealth.Damage(damage);
             tongueAttack.RetractTongue();
+            
             return;
         }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    public Animator playerAnimator;
+
     public List<BossBehaviour> behaviourLoop;
 
     private int currentBehaviourIndex = 0;
@@ -14,11 +16,14 @@ public class Boss : MonoBehaviour
     private bool didSpit = false;
     [HideInInspector] public bool tookDamage = false;
     [HideInInspector] public bool invincible = true;
+
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
         Debug.Assert(behaviourLoop.Count > 0, "No behaviours in behaviour loop");
         totalbehaviours = behaviourLoop.Count;
+
+        playerAnimator.SetTrigger("Awake");
     }
 
     private void Start()

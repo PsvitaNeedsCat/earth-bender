@@ -5,6 +5,7 @@ using Cinemachine;
 
 public class BossSwampAttack : BossBehaviour
 {
+    public float underwaterTime = 5.0f;
     public float chargeUpTime = 3.0f;
     public Animator waveAnimator;
     public GameObject waveObject;
@@ -23,16 +24,18 @@ public class BossSwampAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        Debug.Log("Started swamp attack behaviour");
+        // Debug.Log("Started swamp attack behaviour");
 
-        StartCoroutine(WaveChargeUp());
+        playerAnimator.SetTrigger("SwampAttackInitiate");
+        StartCoroutine(JumpBackOn());
     }
 
-    private IEnumerator WaveChargeUp()
+    private IEnumerator JumpBackOn()
     {
-        yield return new WaitForSeconds(chargeUpTime);
+        yield return new WaitForSeconds(underwaterTime);
 
-        LaunchWave();
+        playerAnimator.SetTrigger("SwampAttackFinish");
+        WaveComplete();
     }
 
     public void LaunchWave()
@@ -44,14 +47,21 @@ public class BossSwampAttack : BossBehaviour
 
     public void WaveComplete()
     {
-        cameraShake.GenerateImpulse();
         waveObject.SetActive(false);
-        isComplete = true;
     }
 
     public override void Reset()
     {
         base.Reset();
+    }
 
+    public void AELaunchWave()
+    {
+        LaunchWave();
+    }
+
+    public void AEFrogLand()
+    {
+        cameraShake.GenerateImpulse();
     }
 }

@@ -20,8 +20,8 @@ public class BossSwellUpAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        Debug.Log("Started swell up attack behaviour");
-        
+        // Debug.Log("Started swell up attack behaviour");
+
         StartCoroutine(Swell());
     }
 
@@ -37,11 +37,12 @@ public class BossSwellUpAttack : BossBehaviour
 
         SwellDown();
 
-        StartCoroutine(CompleteAfterSeconds(swellUpOver));
+        // StartCoroutine(CompleteAfterSeconds(swellUpOver));
     }
 
     private void SwellUp()
     {
+        playerAnimator.SetTrigger("SwellUp");
         bossScript.invincible = false;
         transform.DOKill();
         transform.DOScale(startingScale * 1.5f, swellUpOver).SetEase(Ease.OutElastic);
@@ -49,6 +50,8 @@ public class BossSwellUpAttack : BossBehaviour
 
     private void SwellDown()
     {
+        playerAnimator.SetTrigger("SwellDown");
+
         bossScript.tookDamage = false;
         bossScript.invincible = true;
         

@@ -731,75 +731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f0780346065a142960e8bb6d4a4f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &333092484
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3953735036923188449, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3953735036923188451, guid: 87385500a069158479563a2e786e120f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 87385500a069158479563a2e786e120f, type: 3}
 --- !u!1 &384821487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1105,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426526069
 GameObject:
@@ -1597,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c873df6a39b04ea27c8dc993b6434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthTextureMode: 0
 --- !u!114 &782087321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1623,6 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c873df6a39b04ea27c8dc993b6434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  depthTextureMode: 0
 --- !u!81 &782087323
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2611,7 +2544,7 @@ Transform:
   m_Children:
   - {fileID: 1017112376}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 24.378, y: 129.85, z: 0}
 --- !u!1 &1017112375
 GameObject:
@@ -4773,7 +4706,7 @@ PrefabInstance:
     - target: {fileID: 3189919547840793440, guid: f3272b18b74d1e24abca8c68b3efa2aa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3189919547840793440, guid: f3272b18b74d1e24abca8c68b3efa2aa,
         type: 3}

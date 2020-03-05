@@ -52,6 +52,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Load scene again
         GameObject.FindObjectOfType<SceneController>().ReloadCurrentScene();
+
+        Health = 3;
     }
 
     private void Hurt()

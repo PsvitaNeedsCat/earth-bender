@@ -99,7 +99,7 @@ public class BossSpitUpAttack : BossBehaviour
 
     public void AESpitProjectile()
     {
-        SpitProjectile();
+        StartCoroutine(SpitProjectile());
     }
 
     public void AESpittingFinished()

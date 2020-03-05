@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public Animator playerAnimator;
+    public float awakeAfter = 5.0f;
 
     public List<BossBehaviour> behaviourLoop;
 
@@ -22,15 +23,13 @@ public class Boss : MonoBehaviour
         Random.InitState((int)System.DateTime.Now.Ticks);
         Debug.Assert(behaviourLoop.Count > 0, "No behaviours in behaviour loop");
         totalbehaviours = behaviourLoop.Count;
-
-        playerAnimator.SetTrigger("Awake");
     }
 
     private void Start()
     {
-        
         currentBehaviour = behaviourLoop[0];
-        currentBehaviour.StartBehaviour();
+
+        StartCoroutine(AwakeAfter(awakeAfter));
     }
 
     private void Update()
@@ -81,5 +80,22 @@ public class Boss : MonoBehaviour
             currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
             currentBehaviour = behaviourLoop[currentBehaviourIndex];
         }
+    }
+
+    private IEnumerator AwakeAfter(float afterSeconds)
+    {
+        yield return new WaitForSeconds(afterSeconds);
+
+        playerAnimator.SetTrigger("Awake");
+    }
+
+    private void OnWakeUp()
+    {
+        currentBehaviour.StartBehaviour();
+    }
+
+    public void AEAwake()
+    {
+        OnWakeUp();
     }
 }

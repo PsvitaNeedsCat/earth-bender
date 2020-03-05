@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossAnimations : MonoBehaviour
 {
+    public Boss bossScript;
     public BossSpitUpAttack spitUpAttack;
     public BossSwellUpAttack swellUpAttack;
     public BossSwampAttack swampAttack;
@@ -57,5 +58,10 @@ public class BossAnimations : MonoBehaviour
     public void AESwallow()
     {
         tongueAttack.AESwallow();
+    }
+
+    public void AEAwake()
+    {
+        bossScript.AEAwake();
     }
 }

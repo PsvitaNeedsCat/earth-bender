@@ -7,14 +7,20 @@ public class BossSwellUpAttack : BossBehaviour
 {
     public float swellUpOver = 1.0f;
     public float staySwelledUpFor = 5.0f;
+    public SkinnedMeshRenderer bossRenderer;
+    public Material swollenMaterial;
+    public Transform meshTransform;
+
     private Boss bossScript;
     private float swelledTimer = 0.0f;
     private float startingScale;
+    private Material normalMaterial;
 
     private void Awake()
     {
         bossScript = GetComponent<Boss>();
-        startingScale = transform.localScale.x;
+        startingScale = meshTransform.localScale.x;
+        normalMaterial = bossRenderer.material;
     }
     public override void StartBehaviour()
     {
@@ -44,8 +50,9 @@ public class BossSwellUpAttack : BossBehaviour
     {
         playerAnimator.SetTrigger("SwellUp");
         bossScript.invincible = false;
-        transform.DOKill();
-        transform.DOScale(startingScale * 1.5f, swellUpOver).SetEase(Ease.OutElastic);
+        meshTransform.DOKill();
+        meshTransform.DOScale(startingScale * 1.1f, swellUpOver).SetEase(Ease.OutElastic);
+        bossRenderer.material = swollenMaterial;
     }
 
     private void SwellDown()
@@ -54,9 +61,10 @@ public class BossSwellUpAttack : BossBehaviour
 
         bossScript.tookDamage = false;
         bossScript.invincible = true;
-        
-        transform.DOKill();
-        transform.DOScale(startingScale, swellUpOver).SetEase(Ease.OutElastic);
+
+        meshTransform.DOKill();
+        meshTransform.DOScale(startingScale, swellUpOver).SetEase(Ease.OutElastic);
+        bossRenderer.material = normalMaterial;
     }
 
     public override void Reset()

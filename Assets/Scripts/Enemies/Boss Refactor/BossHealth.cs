@@ -35,6 +35,7 @@ public class BossHealth : MonoBehaviour
     {
         Health -= amount;
         bossScript.tookDamage = true;
+        AudioManager.Instance.PlaySoundVaried("ToadDamaged");
     }
 
 }

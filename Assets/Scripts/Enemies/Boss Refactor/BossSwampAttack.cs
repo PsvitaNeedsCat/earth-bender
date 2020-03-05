@@ -57,6 +57,7 @@ public class BossSwampAttack : BossBehaviour
         waveObject.SetActive(true);
         waveCollider.damagedPlayer = false;
         waveAnimator.SetTrigger("Surge");
+        AudioManager.Instance.PlaySoundVaried("SwampWave");
     }
 
     public void WaveComplete()

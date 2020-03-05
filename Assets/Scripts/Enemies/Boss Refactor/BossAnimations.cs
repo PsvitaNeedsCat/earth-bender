@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Cinemachine;
+
 public class BossAnimations : MonoBehaviour
 {
     public Boss bossScript;
@@ -9,6 +11,13 @@ public class BossAnimations : MonoBehaviour
     public BossSwellUpAttack swellUpAttack;
     public BossSwampAttack swampAttack;
     public BossTongueAttack tongueAttack;
+
+    private CinemachineImpulseSource cameraShake;
+
+    private void Awake()
+    {
+        cameraShake = GetComponent<CinemachineImpulseSource>();
+    }
 
     public void AESpitProjectile()
     {
@@ -28,6 +37,7 @@ public class BossAnimations : MonoBehaviour
     public void AEFrogLand()
     {
         swampAttack.AEFrogLand();
+        AudioManager.Instance.PlaySoundVaried("ToadLand");
     }
 
     public void AESwampBehaviourComplete()
@@ -63,5 +73,19 @@ public class BossAnimations : MonoBehaviour
     public void AEAwake()
     {
         bossScript.AEAwake();
+    }
+
+    public void AEPlayRoarSound()
+    {
+        AudioManager.Instance.PlaySoundVaried("ToadRoar");
+
+        StartCoroutine(CameraShakeAfter(0.1f));
+    }
+
+    private IEnumerator CameraShakeAfter(float afterSeconds)
+    {
+        yield return new WaitForSeconds(afterSeconds);
+
+        cameraShake.GenerateImpulse();
     }
 }

@@ -53,6 +53,8 @@ public class BossSpitUpAttack : BossBehaviour
 
     private IEnumerator SpitProjectile()
     {
+        AudioManager.Instance.PlaySoundVaried("ToadSpit");
+
         // Create projectile
         GameObject newProjectile = Instantiate(projectilePrefab, transform.position + Vector3.up * 30.0f, transform.rotation, null);
         BossSpitProjectile proj = newProjectile.GetComponent<BossSpitProjectile>();

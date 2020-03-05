@@ -24,6 +24,7 @@ public class BossSpitProjectile : MonoBehaviour
         if (isFragment) { return; }
         if (isQuitting) { return; }
         spitUpAttack.ProjectileDestroyed(aimedTile);
+        AudioManager.Instance.PlaySoundVaried("Splash");
     }
 
     private void OnApplicationQuit()

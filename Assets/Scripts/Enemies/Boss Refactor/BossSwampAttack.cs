@@ -12,19 +12,26 @@ public class BossSwampAttack : BossBehaviour
     private BossWaveCollider waveCollider;
     private CinemachineImpulseSource cameraShake;
 
+    private float startingX;
+
+    private float[] possibleXPositions;
+
     // Move a box collider over the whole level
     // If the player is hit, raycast to check if they were guarded by a block
     private void Awake()
     {
         waveCollider = waveObject.GetComponent<BossWaveCollider>();
         cameraShake = GetComponent<CinemachineImpulseSource>();
+
+        startingX = transform.parent.position.x;
+        
+        float[] positions = { startingX - 20.0f, startingX - 10.0f, startingX, startingX + 10.0f, startingX + 20.0f };
+        possibleXPositions = positions;
     }
 
     public override void StartBehaviour()
     {
         base.StartBehaviour();
-
-        // Debug.Log("Started swamp attack behaviour");
 
         playerAnimator.SetTrigger("SwampAttackInitiate");
         StartCoroutine(JumpBackOn());
@@ -32,7 +39,14 @@ public class BossSwampAttack : BossBehaviour
 
     private IEnumerator JumpBackOn()
     {
-        yield return new WaitForSeconds(underwaterTime);
+        yield return new WaitForSeconds(underwaterTime/2.0f);
+
+        float newXPos = possibleXPositions[Random.Range(0, 5)];
+        Vector3 oldPos = transform.parent.position;
+        oldPos.x = newXPos;
+        transform.parent.position = oldPos;
+
+        yield return new WaitForSeconds(underwaterTime/2.0f);
 
         playerAnimator.SetTrigger("SwampAttackFinish");
         WaveComplete();

@@ -53,4 +53,9 @@ public class BossAnimations : MonoBehaviour
     {
         tongueAttack.AEExtendTongue();
     }
+
+    public void AESwallow()
+    {
+        tongueAttack.AESwallow();
+    }
 }

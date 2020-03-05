@@ -39,6 +39,11 @@ public class BossTongueCollider : MonoBehaviour
         }
     }
 
+    public void OnRetracted()
+    {
+        tongueAttack.OnRetracted();
+    }
+
     public GroundType Swallow()
     {
         if (!attachedChunk) { return GroundType.none; }

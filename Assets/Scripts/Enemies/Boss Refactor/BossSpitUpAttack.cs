@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossSpitUpAttack : BossBehaviour
 {
-    public LevelGrid grid;
     public GameObject projectilePrefab;
     public int numProjectiles = 3;
     public float projectileFireDelay = 0.5f;
@@ -14,6 +13,7 @@ public class BossSpitUpAttack : BossBehaviour
     // private List<BossSpitProjectile> projectiles = new List<BossSpitProjectile>();
     private Dictionary<int, GridTile> levelTiles = new Dictionary<int, GridTile>();
     private Boss bossScript;
+    private LevelGrid grid;
 
     private void Awake()
     {
@@ -22,6 +22,8 @@ public class BossSpitUpAttack : BossBehaviour
 
     private void Start()
     {
+        grid = FindObjectOfType<LevelGrid>();
+
         GridTile[] gridTiles = grid.GroundTiles;
 
         for (int i = 0; i < gridTiles.Length; i++)

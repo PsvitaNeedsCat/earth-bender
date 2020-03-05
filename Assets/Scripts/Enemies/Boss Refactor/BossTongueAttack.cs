@@ -15,7 +15,6 @@ public class BossTongueAttack : BossBehaviour
 
         // ExtendTongue();
 
-
         playerAnimator.SetTrigger("TongueAttack");
         
     }
@@ -35,35 +34,26 @@ public class BossTongueAttack : BossBehaviour
             {
                 tongueAnimator.SetTrigger("Retract");
             }
-
-            if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Toad_TongueAttack_Open") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.01f)
-            {
-                playerAnimator.SetTrigger("TongueRetract");
-            }
         }
+    }
 
-        if (tongueAnimator.gameObject.activeSelf && tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("BossTongueIdle"))
+    private void Swallow()
+    {
+        GroundType typeSwallowed = tongueCollider.Swallow();
+        Debug.Log("Swallowed: " + typeSwallowed.ToString());
+
+        if (typeSwallowed == GroundType.poison)
         {
-            Debug.Log("TongueAttack finished");
-            tongueAnimator.gameObject.SetActive(false);
-            tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
-            playerAnimator.SetFloat("TongueExtendDirection", 1.0f);
-
-            GroundType typeSwallowed = tongueCollider.Swallow();
-            Debug.Log("Swallowed: " + typeSwallowed.ToString());
-
-            if (typeSwallowed == GroundType.poison)
-            {
-                bossScript.atePoison = true;
-            }
-
-            if (typeSwallowed == GroundType.dirt)
-            {
-                bossScript.ateRock = true;
-            }
-
-            // isComplete = true;
+            bossScript.atePoison = true;
         }
+
+        if (typeSwallowed == GroundType.dirt)
+        {
+            bossScript.ateRock = true;
+        }
+
+        tongueAnimator.gameObject.SetActive(false);
+        tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
     }
 
     private void ExtendTongue()
@@ -78,18 +68,26 @@ public class BossTongueAttack : BossBehaviour
         if (tongueAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
         {
             Debug.Log("Tried to retract tongue after halfway, not reversing animation");
-            playerAnimator.SetTrigger("TongueAttackFinished");
             return;
         }
 
         tongueAnimator.SetFloat("TongueExtendDirection", -1.0f);
-        playerAnimator.SetFloat("TongueExtendDirection", -1.0f);
 
         isRetracting = true;
+    }
+
+    public void OnRetracted()
+    {
+        playerAnimator.SetTrigger("TongueAttackFinished");
     }
 
     public void AEExtendTongue()
     {
         ExtendTongue();
+    }
+
+    public void AESwallow()
+    {
+        Swallow();
     }
 }

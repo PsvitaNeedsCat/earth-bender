@@ -3,7 +3,7 @@
 	Properties
 	{
 		[Header(DIFFUSE)]
-		_BaseColor("Base Color", Color) = (1,1,1,1)
+		_Color("Base Color", Color) = (1,1,1,1)
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 		[Space]
 		[Header(SHADOWS)]
@@ -33,12 +33,12 @@
 				float3 viewDir;			//Grab view/camera direction
 			};
 
-			fixed4 _BaseColor;				//Declare colour
+			fixed4 _Color;				//Declare colour
 
 			void surf(Input IN, inout SurfaceOutput o)
 			{
 				InitLightingToon(_ShadowThresh, _ShadowSmooth, _ShadowColor);
-				o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _BaseColor;		//Albedo = (diffuse, diffuse UVs) colour * colour chosen in inspector
+				o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;		//Albedo = (diffuse, diffuse UVs) colour * colour chosen in inspector
 			}
 			ENDCG
 		}

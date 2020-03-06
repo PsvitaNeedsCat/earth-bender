@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dee77aec4cf2e49a097f264ceaa3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 2
   hurtBoxPrefab: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
     type: 3}
   punchBoxMoveBy: 5
@@ -111,7 +111,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91581382168510938}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 814c0c5a732256245b212a62d3838c15, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2.5

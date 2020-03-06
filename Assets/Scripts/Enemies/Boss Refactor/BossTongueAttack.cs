@@ -7,6 +7,8 @@ public class BossTongueAttack : BossBehaviour
     public Animator tongueAnimator;
     public BossTongueCollider tongueCollider;
     public Boss bossScript;
+    public GameObject tongueAimIndicator;
+
     private bool isRetracting = false;
 
     public override void StartBehaviour()
@@ -16,6 +18,7 @@ public class BossTongueAttack : BossBehaviour
         // ExtendTongue();
 
         playerAnimator.SetTrigger("TongueAttack");
+        tongueAimIndicator.SetActive(true);
         
     }
     public override void Reset()
@@ -54,6 +57,7 @@ public class BossTongueAttack : BossBehaviour
 
         tongueAnimator.gameObject.SetActive(false);
         tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
+        tongueAimIndicator.SetActive(false);
     }
 
     private void ExtendTongue()

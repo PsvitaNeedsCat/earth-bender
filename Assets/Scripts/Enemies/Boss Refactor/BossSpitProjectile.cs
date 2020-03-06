@@ -10,6 +10,7 @@ public class BossSpitProjectile : MonoBehaviour
     [HideInInspector] public BossSpitUpAttack spitUpAttack;
     [HideInInspector] public Rigidbody rigidBody;
     public GameObject hurtboxPrefab;
+    [HideInInspector] public List<GameObject> aimIndicators;
 
     private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private bool isQuitting = false;
@@ -25,6 +26,13 @@ public class BossSpitProjectile : MonoBehaviour
         if (isQuitting) { return; }
         spitUpAttack.ProjectileDestroyed(aimedTile);
         AudioManager.Instance.PlaySoundVaried("Splash");
+
+        // Destroy aim indicators
+        for (int i = 0; i < aimIndicators.Count; i++)
+        {
+            Destroy(aimIndicators[i]);
+        }
+        aimIndicators.Clear();
     }
 
     private void OnApplicationQuit()
@@ -50,5 +58,10 @@ public class BossSpitProjectile : MonoBehaviour
                 transform.rotation, null).GetComponent<BossSpitProjectile>();
             fragment.isFragment = true;
         }
+    }
+
+    public void AddAimIndicators(List<GameObject> newIndicators)
+    {
+        aimIndicators = newIndicators;
     }
 }

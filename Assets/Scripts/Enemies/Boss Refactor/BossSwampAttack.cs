@@ -25,7 +25,7 @@ public class BossSwampAttack : BossBehaviour
 
         startingX = transform.parent.position.x;
         
-        float[] positions = { startingX - 20.0f, startingX - 10.0f, startingX, startingX + 10.0f, startingX + 20.0f };
+        float[] positions = { startingX - 10.0f, startingX, startingX + 10.0f};
         possibleXPositions = positions;
     }
 
@@ -41,7 +41,7 @@ public class BossSwampAttack : BossBehaviour
     {
         yield return new WaitForSeconds(underwaterTime/2.0f);
 
-        float newXPos = possibleXPositions[Random.Range(0, 5)];
+        float newXPos = possibleXPositions[Random.Range(0, 3)];
         Vector3 oldPos = transform.parent.position;
         oldPos.x = newXPos;
         transform.parent.position = oldPos;

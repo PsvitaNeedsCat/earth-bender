@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d574dcefc959f15468e99e60ad7936f7
+guid: fce7a5eda04d3fc49bd790bc58c8d35b
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Toad_SwampAttackInitiate
+    second: Toad_Death
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Toad_SwampAttackInitiate
+      name: Toad_Death
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -58,14 +58,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.7723577
-        functionName: AELaunchWave
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -128,7 +121,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

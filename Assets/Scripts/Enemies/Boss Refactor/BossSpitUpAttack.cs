@@ -5,15 +5,19 @@ using UnityEngine;
 public class BossSpitUpAttack : BossBehaviour
 {
     public GameObject projectilePrefab;
+    public GameObject aimIndicatorPrefab;
     public int numProjectiles = 3;
     public float projectileFireDelay = 0.5f;
     public float waitAfterFiring = 5.0f;
     public float dropHeight = 100.0f;
+    public Transform projectileSpawnSocket;
 
     // private List<BossSpitProjectile> projectiles = new List<BossSpitProjectile>();
     private Dictionary<int, GridTile> levelTiles = new Dictionary<int, GridTile>();
     private Boss bossScript;
     private LevelGrid grid;
+
+    private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
 
     private void Awake()
     {
@@ -41,14 +45,14 @@ public class BossSpitUpAttack : BossBehaviour
         playerAnimator.SetTrigger("Spit");
     }
 
-    private void SpittingFinished()
+    private IEnumerator SpittingFinished()
     {
+        yield return new WaitForSeconds(1.0f);
+
         if (bossScript.ateRock)
         {
             bossScript.ateRock = false;
         }
-
-        // isComplete = true;
     }
 
     private IEnumerator SpitProjectile()
@@ -56,7 +60,7 @@ public class BossSpitUpAttack : BossBehaviour
         AudioManager.Instance.PlaySoundVaried("ToadSpit");
 
         // Create projectile
-        GameObject newProjectile = Instantiate(projectilePrefab, transform.position + Vector3.up * 30.0f, transform.rotation, null);
+        GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnSocket.position, Quaternion.identity, null);
         BossSpitProjectile proj = newProjectile.GetComponent<BossSpitProjectile>();
         proj.spitUpAttack = this;
 
@@ -74,6 +78,20 @@ public class BossSpitUpAttack : BossBehaviour
         // When projectile is off screen, move it above the tile it will land on
         proj.rigidBody.velocity = Vector3.zero;
         proj.transform.position = proj.aimedTile.transform.position + Vector3.up * dropHeight;
+
+        List<GameObject> aimIndicators = new List<GameObject>();
+
+        aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position, Quaternion.identity, null));
+        
+        if (bossScript.ateRock)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position + (fragmentDirections[i] * 10.0f), Quaternion.identity, null));
+            }
+        }
+
+        proj.AddAimIndicators(aimIndicators);
     }
 
     public override void Reset()
@@ -106,6 +124,6 @@ public class BossSpitUpAttack : BossBehaviour
 
     public void AESpittingFinished()
     {
-        SpittingFinished();
+        StartCoroutine(SpittingFinished());
     }
 }

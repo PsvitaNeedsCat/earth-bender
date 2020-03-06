@@ -8,7 +8,7 @@ ModelImporter:
     second: Toad_TongueAttack_Open
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -59,7 +59,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9900498
+      - time: 0.6268657
         functionName: AEExtendTongue
         data: 
         objectReferenceParameter: {instanceID: 0}

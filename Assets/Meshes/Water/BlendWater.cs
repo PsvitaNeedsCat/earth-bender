@@ -7,7 +7,7 @@ public class BlendWater : MonoBehaviour
     Renderer rend;
 
     private float blendVal;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 0.2f;
 
     // Start is called before the first frame update
     void Start()

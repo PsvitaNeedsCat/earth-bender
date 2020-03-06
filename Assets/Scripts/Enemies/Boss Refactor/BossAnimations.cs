@@ -63,6 +63,7 @@ public class BossAnimations : MonoBehaviour
     public void AEExtendTongue()
     {
         tongueAttack.AEExtendTongue();
+        AudioManager.Instance.PlaySoundVaried("ToadTongue");
     }
 
     public void AESwallow()

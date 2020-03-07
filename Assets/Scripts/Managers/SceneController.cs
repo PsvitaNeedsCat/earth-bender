@@ -18,14 +18,11 @@ public class SceneController : MonoBehaviour
     private int loadThisScene = 0;
     private List<int> loadedScenes = new List<int>();
     private const int maxScenesLoaded = 1;
-    private int currentLevel;
 
     private void Awake()
     {
-        currentLevel = initialScene;
-
         // Singleton
-        if (_pSceneController != null && _pSceneController != this)
+        if (_pSceneController != null && !_pSceneController != this)
         {
             Destroy(this.gameObject);
         }
@@ -53,8 +50,6 @@ public class SceneController : MonoBehaviour
             // Set new scene as active
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));
         }
-
-        GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeIn");
     }
 
     public void LoadAsyncScene(int sceneIndex)
@@ -78,19 +73,5 @@ public class SceneController : MonoBehaviour
         // Loads the new scene
         SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Additive);
         loadThisScene = sceneIndex;
-    }
-
-    public void LoadNextLevel()
-    {
-        LoadAsyncScene(currentLevel);
-
-        currentLevel += 1;
-    }
-
-    public void ReloadCurrentScene()
-    {
-        SceneManager.UnloadSceneAsync(sceneNames[currentLevel - 1]);
-
-        SceneManager.LoadScene(sceneNames[currentLevel - 1], LoadSceneMode.Additive);
     }
 }

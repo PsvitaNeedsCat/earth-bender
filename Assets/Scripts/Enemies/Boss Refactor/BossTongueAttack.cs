@@ -15,7 +15,7 @@ public class BossTongueAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        // ExtendTongue();
+        ExtendTongue();
 
         playerAnimator.SetTrigger("TongueAttack");
         tongueAimIndicator.SetActive(true);
@@ -38,27 +38,32 @@ public class BossTongueAttack : BossBehaviour
                 tongueAnimator.SetTrigger("Retract");
             }
         }
-    }
 
-    private void Swallow()
-    {
-        GroundType typeSwallowed = tongueCollider.Swallow();
-        Debug.Log("Swallowed: " + typeSwallowed.ToString());
-
-        if (typeSwallowed == GroundType.poison)
+        if (tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("BossTongueIdle"))
         {
-            bossScript.atePoison = true;
-        }
+            Debug.Log("TongueAttack finished");
+            tongueAnimator.gameObject.SetActive(false);
+            tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
 
-        if (typeSwallowed == GroundType.dirt)
-        {
-            bossScript.ateRock = true;
-        }
+            GroundType typeSwallowed = tongueCollider.Swallow();
+            Debug.Log("Swallowed: " + typeSwallowed.ToString());
+
+            if (typeSwallowed == GroundType.poison)
+            {
+                bossScript.atePoison = true;
+            }
+
+            if (typeSwallowed == GroundType.dirt)
+            {
+                bossScript.ateRock = true;
+            }
 
         tongueAnimator.gameObject.SetActive(false);
         tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
         tongueAimIndicator.SetActive(false);
     }
+
+    
 
     private void ExtendTongue()
     {
@@ -76,22 +81,6 @@ public class BossTongueAttack : BossBehaviour
         }
 
         tongueAnimator.SetFloat("TongueExtendDirection", -1.0f);
-
         isRetracting = true;
-    }
-
-    public void OnRetracted()
-    {
-        playerAnimator.SetTrigger("TongueAttackFinished");
-    }
-
-    public void AEExtendTongue()
-    {
-        ExtendTongue();
-    }
-
-    public void AESwallow()
-    {
-        Swallow();
     }
 }

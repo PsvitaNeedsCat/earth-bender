@@ -13,10 +13,10 @@ public class Chunk : MonoBehaviour
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     [HideInInspector] public bool isRaised = false;
-    [HideInInspector] public bool isQuitting = false;
 
     private bool attemptingToStop = false;
     private int health = 2;
+    private bool isQuitting = false;
     public int Health
     {
         get { return health; }
@@ -34,7 +34,7 @@ public class Chunk : MonoBehaviour
         spawnPosition = transform.position;
 
         FindObjectOfType<PlayerController>().AddChunk(this); // ew
-        AudioManager.Instance.PlaySoundVaried("RockCall");
+        AudioManager.Instance.PlaySound("RockCall");
     }
 
     private void OnApplicationQuit()
@@ -74,7 +74,7 @@ public class Chunk : MonoBehaviour
 
         transform.DOKill();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
-        AudioManager.Instance.PlaySoundVaried("RockDestroy");
+        AudioManager.Instance.PlaySound("RockDestroy");
     }
 
     public void Hit(Vector3 hitVec)
@@ -95,7 +95,7 @@ public class Chunk : MonoBehaviour
 
         rigidBody.AddForce(hitVec, ForceMode.Impulse);
 
-        AudioManager.Instance.PlaySoundVaried("RockHit");
+        AudioManager.Instance.PlaySound("RockHit");
     }
 
     public void Detach()

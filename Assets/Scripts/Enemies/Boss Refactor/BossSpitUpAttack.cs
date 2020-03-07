@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossSpitUpAttack : BossBehaviour
 {
+    public LevelGrid grid;
     public GameObject projectilePrefab;
     public GameObject aimIndicatorPrefab;
     public int numProjectiles = 3;
@@ -15,7 +16,6 @@ public class BossSpitUpAttack : BossBehaviour
     // private List<BossSpitProjectile> projectiles = new List<BossSpitProjectile>();
     private Dictionary<int, GridTile> levelTiles = new Dictionary<int, GridTile>();
     private Boss bossScript;
-    private LevelGrid grid;
 
     private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
 
@@ -26,8 +26,6 @@ public class BossSpitUpAttack : BossBehaviour
 
     private void Start()
     {
-        grid = FindObjectOfType<LevelGrid>();
-
         GridTile[] gridTiles = grid.GroundTiles;
 
         for (int i = 0; i < gridTiles.Length; i++)
@@ -40,9 +38,8 @@ public class BossSpitUpAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        // Debug.Log("Started spit up attack behaviour");
-        // StartCoroutine(SpitProjectiles());
-        playerAnimator.SetTrigger("Spit");
+        Debug.Log("Started spit up attack behaviour");
+        StartCoroutine(SpitProjectiles());
     }
 
     private IEnumerator SpittingFinished()
@@ -57,8 +54,6 @@ public class BossSpitUpAttack : BossBehaviour
 
     private IEnumerator SpitProjectile()
     {
-        AudioManager.Instance.PlaySoundVaried("ToadSpit");
-
         // Create projectile
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnSocket.position, Quaternion.identity, null);
         BossSpitProjectile proj = newProjectile.GetComponent<BossSpitProjectile>();

@@ -6,7 +6,6 @@ public abstract class BossBehaviour : MonoBehaviour
 {
     [HideInInspector] public bool isComplete = false;
     [HideInInspector] public bool isActive = false;
-    public Animator playerAnimator;
 
     public virtual void StartBehaviour()
     {
@@ -26,8 +25,4 @@ public abstract class BossBehaviour : MonoBehaviour
         isComplete = true;
     }
 
-    public void AEBehaviourComplete()
-    {
-        isComplete = true;
-    }
 }

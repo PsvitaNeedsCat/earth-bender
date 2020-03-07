@@ -5,16 +5,11 @@ using Cinemachine;
 
 public class BossSwampAttack : BossBehaviour
 {
-    public float underwaterTime = 5.0f;
     public float chargeUpTime = 3.0f;
     public Animator waveAnimator;
     public GameObject waveObject;
     private BossWaveCollider waveCollider;
     private CinemachineImpulseSource cameraShake;
-
-    private float startingX;
-
-    private float[] possibleXPositions;
 
     // Move a box collider over the whole level
     // If the player is hit, raycast to check if they were guarded by a block
@@ -33,13 +28,14 @@ public class BossSwampAttack : BossBehaviour
     {
         base.StartBehaviour();
 
-        playerAnimator.SetTrigger("SwampAttackInitiate");
-        StartCoroutine(JumpBackOn());
+        Debug.Log("Started swamp attack behaviour");
+
+        StartCoroutine(WaveChargeUp());
     }
 
-    private IEnumerator JumpBackOn()
+    private IEnumerator WaveChargeUp()
     {
-        yield return new WaitForSeconds(underwaterTime/2.0f);
+        yield return new WaitForSeconds(chargeUpTime);
 
         float newXPos = possibleXPositions[Random.Range(0, 3)];
         Vector3 oldPos = transform.parent.position;
@@ -57,26 +53,18 @@ public class BossSwampAttack : BossBehaviour
         waveObject.SetActive(true);
         waveCollider.damagedPlayer = false;
         waveAnimator.SetTrigger("Surge");
-        AudioManager.Instance.PlaySoundVaried("SwampWave");
     }
 
     public void WaveComplete()
     {
+        cameraShake.GenerateImpulse();
         waveObject.SetActive(false);
+        isComplete = true;
     }
 
     public override void Reset()
     {
         base.Reset();
-    }
 
-    public void AELaunchWave()
-    {
-        LaunchWave();
-    }
-
-    public void AEFrogLand()
-    {
-        cameraShake.GenerateImpulse();
     }
 }

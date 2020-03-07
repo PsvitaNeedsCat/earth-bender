@@ -118,16 +118,4 @@ public class Player : MonoBehaviour
     {
         moveDisabled = true;
     }
-
-    public void SetControls(bool _active)
-    {
-        if (_active)
-        {
-            controls.Player.Enable();
-        }
-        else
-        {
-            controls.Player.Disable();
-        }
-    }
 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public Animator playerAnimator;
-    public float awakeAfter = 5.0f;
-
     public List<BossBehaviour> behaviourLoop;
 
     private int currentBehaviourIndex = 0;
@@ -17,7 +14,6 @@ public class Boss : MonoBehaviour
     private bool didSpit = false;
     [HideInInspector] public bool tookDamage = false;
     [HideInInspector] public bool invincible = true;
-
     private void Awake()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
@@ -28,8 +24,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         currentBehaviour = behaviourLoop[0];
-
-        StartCoroutine(AwakeAfter(awakeAfter));
+        currentBehaviour.StartBehaviour();
     }
 
     private void Update()
@@ -80,22 +75,5 @@ public class Boss : MonoBehaviour
             currentBehaviourIndex = (currentBehaviourIndex + 1) % totalbehaviours;
             currentBehaviour = behaviourLoop[currentBehaviourIndex];
         }
-    }
-
-    private IEnumerator AwakeAfter(float afterSeconds)
-    {
-        yield return new WaitForSeconds(afterSeconds);
-
-        playerAnimator.SetTrigger("Awake");
-    }
-
-    private void OnWakeUp()
-    {
-        currentBehaviour.StartBehaviour();
-    }
-
-    public void AEAwake()
-    {
-        OnWakeUp();
     }
 }

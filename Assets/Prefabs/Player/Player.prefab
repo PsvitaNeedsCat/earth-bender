@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dee77aec4cf2e49a097f264ceaa3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1.5
   hurtBoxPrefab: {fileID: 559978336584420042, guid: 1e02c927d90ccea44ab7661457c4d57c,
     type: 3}
   punchBoxMoveBy: 5
@@ -2030,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
@@ -2090,7 +2090,7 @@ PrefabInstance:
     - target: {fileID: 6703264857958518699, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: maxRange
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23973c31990eb5a45bcc645832296b14, type: 3}

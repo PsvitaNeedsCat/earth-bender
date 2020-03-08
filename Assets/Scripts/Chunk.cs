@@ -138,7 +138,6 @@ public class Chunk : MonoBehaviour
             {
                 BossHealth health = collision.gameObject.GetComponent<BossHealth>();
                 health.Damage(damage);
-                
             }
 
             Destroy(this.gameObject);

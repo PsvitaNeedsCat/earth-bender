@@ -12,19 +12,29 @@ public class BossWaveCollider : MonoBehaviour
     public float sphereCastDistance = 100.0f;
     public bool damagedPlayer = false;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
 
         if (playerHealth)
         {
             // Check if player is guarded by a block
-            if (!damagedPlayer && !CheckForChunk(playerHealth))
-            {
-                playerHealth.Damage(damage);
-                damagedPlayer = true;
-            }
-            
+            //if (!damagedPlayer && !CheckForChunk(playerHealth))
+            //{
+            //    playerHealth.Damage(damage);
+            //    damagedPlayer = true;
+            //}
+
+            playerHealth.Damage(damage);
+            this.gameObject.SetActive(false);
+            return;
+        }
+
+        Chunk chunk = other.gameObject.GetComponent<Chunk>();
+
+        if (chunk)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -37,10 +47,5 @@ public class BossWaveCollider : MonoBehaviour
         bool result = Physics.SphereCast(player.transform.position, sphereCastRadius, -waveDirection, out hitInfo, sphereCastDistance, waveBlockingLayers);
 
         return result;
-    }
-
-    public void WaveComplete()
-    {
-        swampAttack.WaveComplete();
     }
 }

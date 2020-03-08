@@ -49,20 +49,14 @@ public class BossSwampAttack : BossBehaviour
         yield return new WaitForSeconds(underwaterTime/2.0f);
 
         playerAnimator.SetTrigger("SwampAttackFinish");
-        WaveComplete();
     }
 
     public void LaunchWave()
     {
         waveObject.SetActive(true);
-        waveCollider.damagedPlayer = false;
+        waveObject.GetComponent<BossWaveObject>().OnWaveStart();
         waveAnimator.SetTrigger("Surge");
         AudioManager.Instance.PlaySoundVaried("SwampWave");
-    }
-
-    public void WaveComplete()
-    {
-        waveObject.SetActive(false);
     }
 
     public override void Reset()

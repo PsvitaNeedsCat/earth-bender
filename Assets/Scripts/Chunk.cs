@@ -12,7 +12,7 @@ public class Chunk : MonoBehaviour
     public static int damage = 1;
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
-    [HideInInspector] public bool isRaised = false;
+    public bool isRaised = false;
     [HideInInspector] public bool isQuitting = false;
 
     private bool attemptingToStop = false;
@@ -138,7 +138,6 @@ public class Chunk : MonoBehaviour
             {
                 BossHealth health = collision.gameObject.GetComponent<BossHealth>();
                 health.Damage(damage);
-                
             }
 
             Destroy(this.gameObject);

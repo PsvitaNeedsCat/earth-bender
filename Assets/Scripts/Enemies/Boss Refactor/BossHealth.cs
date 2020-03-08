@@ -8,6 +8,7 @@ public class BossHealth : MonoBehaviour
     public int health = 3;
     public Animator bossAnimator;
     public Transform bossMeshTransform;
+    public GameObject waterCrystal;
 
     private Boss bossScript;
 
@@ -54,5 +55,16 @@ public class BossHealth : MonoBehaviour
 
         // bossAnimator.speed = 1.0f;
         Time.timeScale = 1.0f;
+    }
+
+    private void OnDeath()
+    {
+        waterCrystal.SetActive(true);
+        waterCrystal.transform.parent = null;
+    }
+
+    public void AEOnDeath()
+    {
+        OnDeath();
     }
 }

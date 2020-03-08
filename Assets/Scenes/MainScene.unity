@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNames:
+  - Tutorial
   - Level1
   - Level2
   - Level3

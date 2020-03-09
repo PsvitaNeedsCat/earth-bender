@@ -33,7 +33,7 @@ public class BossTongueAttack : BossBehaviour
 
         if (isRetracting)
         {
-            if (tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("BossTongueExtend") && tongueAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.01f)
+            if (tongueAnimator.GetCurrentAnimatorStateInfo(0).IsName("Tongue_Extend") && tongueAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.01f)
             {
                 tongueAnimator.SetTrigger("Retract");
             }
@@ -83,6 +83,7 @@ public class BossTongueAttack : BossBehaviour
     public void OnRetracted()
     {
         playerAnimator.SetTrigger("TongueAttackFinished");
+        Debug.Log("Set tongueattackfinished");
     }
 
     public void AEExtendTongue()

@@ -85,6 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  wallLayers:
+    serializedVersion: 2
+    m_Bits: 513
   isRaised: 0
   isQuitting: 0
 --- !u!23 &8350189179287419192

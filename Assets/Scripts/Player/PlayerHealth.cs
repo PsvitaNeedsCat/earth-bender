@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class PlayerHealth : MonoBehaviour
         get { return health; }
         set
         {
+            if (value < health)
+            {
+                // Screen shake
+                GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+            }
+
             health = value;
 
             UpdateShatter();

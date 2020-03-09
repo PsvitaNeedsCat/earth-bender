@@ -11,7 +11,10 @@ public class DoorTrigger : MonoBehaviour
         if (triggered) { return; }
         triggered = true;
 
+        GameObject.FindObjectOfType<Player>().SetControls(false);
+
         // Fade to black
+        GameObject.Find("Fade").GetComponent<Animator>().ResetTrigger("FadeIn");
         GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
 
         StartCoroutine(LoadNextLevel());
@@ -21,6 +24,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            GameObject.Find("Fade").GetComponent<Animator>().ResetTrigger("FadeIn");
             GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
         }
     }

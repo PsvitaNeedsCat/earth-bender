@@ -7,9 +7,11 @@ using DG.Tweening;
 public class Chunk : MonoBehaviour
 {
     public GroundType type;
+    public LayerMask wallLayers;
     public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
     public static int damage = 1;
+
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     public bool isRaised = false;
@@ -111,7 +113,7 @@ public class Chunk : MonoBehaviour
         checkPosition.y -= 4.5f; // Almost bottom of chunk
 
         // Raycast in the direction of hit vec for half a chunks length
-        if (Physics.Raycast(checkPosition, hitVec, distance))
+        if (Physics.Raycast(checkPosition, hitVec, distance, wallLayers))
         {
             // Hit something, thus a wall
             return true;

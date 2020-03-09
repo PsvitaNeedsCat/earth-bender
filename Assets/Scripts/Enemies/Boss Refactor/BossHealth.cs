@@ -59,8 +59,10 @@ public class BossHealth : MonoBehaviour
 
     private void OnDeath()
     {
+        // waterCrystal.transform.parent = null;
+        // waterCrystal.transform.rotation = Quaternion.identity;
+        // waterCrystal.transform.localScale = Vector3.one;
         waterCrystal.SetActive(true);
-        waterCrystal.transform.parent = null;
     }
 
     public void AEOnDeath()

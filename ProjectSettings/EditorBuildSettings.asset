@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Splash Screen/SplashScreen.unity
+    guid: 77d1adf0e229c434baa27cef828aebd8
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 6eeb3f7709b9af34197933e5206ed43f
@@ -29,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: 8dc7b8c4eba543546b67d18f6c69f889
-  - enabled: 1
-    path: Assets/Scenes/CallumTest.unity
-    guid: d917ecde7f9319640b95a20ed555cc2a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2c508f3b5052c25428849e5436340d91,
       type: 2}

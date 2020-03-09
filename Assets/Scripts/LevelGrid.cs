@@ -28,6 +28,7 @@ public class LevelGrid : MonoBehaviour
         for (int i = 0; i < groundTiles.Length; i++)
         {
             GridTile tile = groundTiles[i];
+            if (tile.type == GroundType.none) { continue; }
 
             float dist = (tile.transform.position - queryPosition).magnitude;
 

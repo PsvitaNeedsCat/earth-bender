@@ -23,8 +23,11 @@ public class TileTargeter : MonoBehaviour
     {
         closest = levelGrid.FindClosestTile(transform.position);
 
+        Vector3 diff = closest.transform.position - transform.position;
+        diff.y = 0.0f;
+
         // If the closest tile is within range
-        if ((closest.transform.position - transform.position).magnitude < maxRange && !closest.IsOccupied())
+        if (diff.magnitude < maxRange && !closest.IsOccupied())
         {
             targetIndicator.SetActive(true);
             targetIndicator.transform.position = closest.transform.position;

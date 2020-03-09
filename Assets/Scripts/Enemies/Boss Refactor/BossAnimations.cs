@@ -11,6 +11,7 @@ public class BossAnimations : MonoBehaviour
     public BossSwellUpAttack swellUpAttack;
     public BossSwampAttack swampAttack;
     public BossTongueAttack tongueAttack;
+    public BossHealth bossHealth;
 
     private CinemachineImpulseSource cameraShake;
 
@@ -88,5 +89,10 @@ public class BossAnimations : MonoBehaviour
         yield return new WaitForSeconds(afterSeconds);
 
         cameraShake.GenerateImpulse();
+    }
+
+    public void AEOnDeath()
+    {
+        bossHealth.AEOnDeath();
     }
 }

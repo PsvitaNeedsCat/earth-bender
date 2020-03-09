@@ -15,6 +15,23 @@ public class BossSpitProjectile : MonoBehaviour
     private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private bool isQuitting = false;
 
+    // Despawn fragments
+    float fragmentTimer = 3.0f;
+    bool outOfZone = false;
+
+    private void Update()
+    {
+        if (isFragment)
+        {
+            fragmentTimer -= Time.deltaTime;
+            if (fragmentTimer <= 0.0f)
+            {
+                outOfZone = true;
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -22,10 +39,14 @@ public class BossSpitProjectile : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (isFragment) { return; }
-        if (isQuitting) { return; }
-        spitUpAttack.ProjectileDestroyed(aimedTile);
+
+        if (isQuitting || outOfZone) { return; }
+
         AudioManager.Instance.PlaySoundVaried("Splash");
+
+        if (isFragment) { return; }
+
+        spitUpAttack.ProjectileDestroyed(aimedTile);
 
         // Destroy aim indicators
         for (int i = 0; i < aimIndicators.Count; i++)

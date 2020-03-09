@@ -84,6 +84,7 @@ public class Chunk : MonoBehaviour
         
         if (IsAgainstWall(hitVec))
         {
+            AudioManager.Instance.PlaySoundVaried("RockDamaged");
             Damage(1);
             return;
         }
@@ -146,6 +147,8 @@ public class Chunk : MonoBehaviour
 
     void SnapChunk()
     {
+        AudioManager.Instance.PlaySoundVaried("Rock_Hit_Wall");
+
         rigidBody.velocity = Vector3.zero;
         rigidBody.isKinematic = true;
         Debug.Log("Stopped");

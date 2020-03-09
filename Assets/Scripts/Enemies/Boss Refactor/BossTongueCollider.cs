@@ -29,6 +29,7 @@ public class BossTongueCollider : MonoBehaviour
                 // Pick up & eat chunk
                 chunk.Detach();
 
+                chunk.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 chunk.transform.parent = this.transform;
                 chunk.GetComponent<Collider>().isTrigger = true;
 

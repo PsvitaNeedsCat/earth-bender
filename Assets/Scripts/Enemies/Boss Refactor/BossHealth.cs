@@ -9,9 +9,10 @@ public class BossHealth : MonoBehaviour
     public Animator bossAnimator;
     public Transform bossMeshTransform;
     public GameObject waterCrystal;
+    public GameObject[] healthBars;
+    public GameObject healthCanvas;
 
     private Boss bossScript;
-
     private void Awake()
     {
         bossScript = GetComponent<Boss>();
@@ -35,6 +36,7 @@ public class BossHealth : MonoBehaviour
     private void Death()
     {
         bossAnimator.SetTrigger("Dead");
+        healthCanvas.SetActive(false);
     }
 
     public void Damage(int amount)
@@ -43,7 +45,12 @@ public class BossHealth : MonoBehaviour
         bossScript.tookDamage = true;
         AudioManager.Instance.PlaySoundVaried("ToadDamaged");
 
-        StartCoroutine(FreezeFor(0.05f));
+        StartCoroutine(FreezeFor(0.1f));
+
+        if (Health >= 0)
+        {
+            healthBars[Health].SetActive(false);
+        }
     }
 
     private IEnumerator FreezeFor(float forSeconds)

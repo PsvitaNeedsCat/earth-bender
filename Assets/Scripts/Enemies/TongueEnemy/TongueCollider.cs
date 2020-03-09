@@ -48,6 +48,8 @@ public class TongueCollider : MonoBehaviour
 
     public void Extend()
     {
+        AudioManager.Instance.PlaySoundVaried("ToadTongue");
+
         tongueEnemy.isExtending = true;
 
         // Tween to tweenPosition

@@ -85,6 +85,12 @@ public class SceneController : MonoBehaviour
         LoadAsyncScene(currentLevel);
 
         currentLevel += 1;
+
+        // Temp code
+        if (currentLevel == 5)
+        {
+            GameObject.FindObjectOfType<TempMusicManager>().PlayBossMusic();
+        }
     }
 
     public void ReloadCurrentScene()

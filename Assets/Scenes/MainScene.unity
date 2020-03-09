@@ -623,7 +623,7 @@ MonoBehaviour:
   - Level2
   - Level3
   - BossScene
-  initialScene: 1
+  initialScene: 5
 --- !u!1001 &2046920411
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -169,7 +169,7 @@ public class Chunk : MonoBehaviour
         // Snap chunk to nearest tile //
 
         // Find nearest tile
-        GridTile nearest = GameObject.FindObjectOfType<LevelGrid>().FindClosestTile(transform.position);
+        GridTile nearest = GameObject.FindObjectOfType<LevelGrid>().FindClosestTileAny(transform.position);
 
         // Snap to the nearest tile's position
         Vector3 newPos = transform.position;

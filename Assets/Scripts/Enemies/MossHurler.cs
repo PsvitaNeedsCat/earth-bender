@@ -38,6 +38,8 @@ public class MossHurler : MonoBehaviour
 
     private void FireProjectile()
     {
+        AudioManager.Instance.PlaySoundVaried("ToadSpit");
+
         attackTimer = attackCooldown;
         MossHurlerProjectile projectile = Instantiate(projectilePrefab, projectileCreationTransform.position, projectileCreationTransform.rotation, null).GetComponent<MossHurlerProjectile>();
         projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileSpeed;

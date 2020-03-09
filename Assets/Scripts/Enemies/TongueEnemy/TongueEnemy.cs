@@ -10,7 +10,7 @@ public class TongueEnemy : MonoBehaviour
     public bool isRetracting = false;
 
     float extendTimer;
-    const float maxExtendTimer = 2.0f;
+    const float maxExtendTimer = 3.0f;
 
     private void Awake()
     {
@@ -26,8 +26,13 @@ public class TongueEnemy : MonoBehaviour
 
         if (typeSwallowed == GroundType.poison)
         {
+            AudioManager.Instance.PlaySoundVaried("RockDestroy");
             Destroy(this.gameObject);
             return;
+        }
+        else if (typeSwallowed != GroundType.none)
+        {
+            AudioManager.Instance.PlaySoundVaried("gulp");
         }
 
         tongueCollider.gameObject.SetActive(false);

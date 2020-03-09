@@ -27,8 +27,11 @@ public class BossTongueCollider : MonoBehaviour
             if (chunk)
             {
                 // Pick up & eat chunk
+                AudioManager.Instance.PlaySoundVaried("stuck");
+
                 chunk.Detach();
 
+                chunk.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 chunk.transform.parent = this.transform;
                 chunk.GetComponent<Collider>().isTrigger = true;
 
@@ -50,7 +53,7 @@ public class BossTongueCollider : MonoBehaviour
 
         GroundType type = attachedChunk.type;
 
-        Destroy(attachedChunk);
+        attachedChunk.DestroyQuiet();
 
         return type;
     }

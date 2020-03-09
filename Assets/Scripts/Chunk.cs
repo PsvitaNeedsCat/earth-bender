@@ -7,13 +7,16 @@ using DG.Tweening;
 public class Chunk : MonoBehaviour
 {
     public GroundType type;
+    public LayerMask wallLayers;
     public static float raiseTime = 0.5f;
     public static float raiseAmount = 10.0f;
     public static int damage = 1;
+
     private Rigidbody rigidBody;
     private Vector3 spawnPosition;
     public bool isRaised = false;
     [HideInInspector] public bool isQuitting = false;
+    bool destroyQuiet = false;
 
     private bool attemptingToStop = false;
     private int health = 2;
@@ -74,7 +77,17 @@ public class Chunk : MonoBehaviour
 
         transform.DOKill();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
-        AudioManager.Instance.PlaySoundVaried("RockDestroy");
+
+        if (!destroyQuiet)
+        {
+            AudioManager.Instance.PlaySoundVaried("RockDestroy");
+        }
+    }
+
+    public void DestroyQuiet()
+    {
+        destroyQuiet = true;
+        Destroy(this.gameObject);
     }
 
     public void Hit(Vector3 hitVec)
@@ -84,6 +97,7 @@ public class Chunk : MonoBehaviour
         
         if (IsAgainstWall(hitVec))
         {
+            AudioManager.Instance.PlaySoundVaried("RockDamaged");
             Damage(1);
             return;
         }
@@ -111,7 +125,7 @@ public class Chunk : MonoBehaviour
         checkPosition.y -= 4.5f; // Almost bottom of chunk
 
         // Raycast in the direction of hit vec for half a chunks length
-        if (Physics.Raycast(checkPosition, hitVec, distance))
+        if (Physics.Raycast(checkPosition, hitVec, distance, wallLayers))
         {
             // Hit something, thus a wall
             return true;
@@ -146,6 +160,8 @@ public class Chunk : MonoBehaviour
 
     void SnapChunk()
     {
+        AudioManager.Instance.PlaySoundVaried("Rock_Hit_Wall");
+
         rigidBody.velocity = Vector3.zero;
         rigidBody.isKinematic = true;
         Debug.Log("Stopped");

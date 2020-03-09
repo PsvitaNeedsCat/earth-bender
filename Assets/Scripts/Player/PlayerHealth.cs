@@ -60,6 +60,8 @@ public class PlayerHealth : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
+        AudioManager.Instance.PlaySoundVaried("hurt");
+
         isInvincible = true;
         seq.Append(playerMaterial.DOColor(hurtColour, flashTime * 0.5f));
         

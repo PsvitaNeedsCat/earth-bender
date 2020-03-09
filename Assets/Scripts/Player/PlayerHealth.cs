@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public Color hurtColour;
     [SerializeField] float flashTime;
     public SkinnedMeshRenderer playerRenderer;
+    [SerializeField] Sprite shatter1; // One damage taken
+    [SerializeField] Sprite shatter2; // Two damage taken
 
     TextMeshProUGUI healthText;
     private bool isInvincible = false;
@@ -20,8 +24,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        healthText = GameObject.Find("PlayerHP").GetComponent<TextMeshProUGUI>();
-
         Health = 3;
 
         playerMaterial = playerRenderer.material;
@@ -34,15 +36,54 @@ public class PlayerHealth : MonoBehaviour
         get { return health; }
         set
         {
+            if (value < health)
+            {
+                // Screen shake
+                GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+            }
+
             health = value;
 
-            if (healthText) { healthText.text = "Health: " + health; }
+            UpdateShatter();
 
             if (health <= 0)
             {
                 Death();
             }
         }
+    }
+
+    void UpdateShatter()
+    {
+        Image _shatter = GameObject.Find("Shatter").GetComponent<Image>();
+
+        Color _colour = _shatter.color;
+
+        switch (health)
+        {
+            case 3:
+                {
+                    _colour.a = 0.0f;
+                    break;
+                }
+            case 2:
+                {
+                    _colour.a = 1.0f;
+                    _shatter.sprite = shatter1;
+                    break;
+                }
+            case 1:
+                {
+                    _colour.a = 1.0f;
+                    _shatter.sprite = shatter2;
+                    break;
+                }
+
+            default:
+                return;
+        }
+
+        _shatter.color = _colour;
     }
 
     private void Death()
@@ -76,14 +117,4 @@ public class PlayerHealth : MonoBehaviour
         Health -= amount;
         Hurt();
     }
-
-    //public void AEStartInvincibility()
-    //{
-    //    isInvincible = true;
-    //}
-
-    //public void AEStopInvincibility()
-    //{
-    //    isInvincible = false;
-    //}
 }

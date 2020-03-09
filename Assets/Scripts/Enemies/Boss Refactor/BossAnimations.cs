@@ -12,6 +12,7 @@ public class BossAnimations : MonoBehaviour
     public BossSwampAttack swampAttack;
     public BossTongueAttack tongueAttack;
     public BossHealth bossHealth;
+    public GameObject healthCanvas;
 
     private CinemachineImpulseSource cameraShake;
 
@@ -94,5 +95,10 @@ public class BossAnimations : MonoBehaviour
     public void AEOnDeath()
     {
         bossHealth.AEOnDeath();
+    }
+
+    public void AEActivateHealthBar()
+    {
+        healthCanvas.SetActive(true);
     }
 }

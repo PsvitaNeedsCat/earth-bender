@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 381813503075037420, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80ec302a435342a4491f03a3673f3971, type: 2}
+    - target: {fileID: 1347423352228920645, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6343086628222001670, guid: dca57538833584642869aa3fccfeac0b,
+        type: 3}
     - target: {fileID: 3895855595473161120, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
         type: 3}
       propertyPath: type
@@ -77,6 +88,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DirtTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353001797229938788, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a5ca5a678106434ea9a50ecf6476c1d, type: 3}

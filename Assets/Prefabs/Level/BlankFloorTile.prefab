@@ -11,7 +11,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -2645566435453794971, guid: 4631687d9018a704792162ec02eed4b7,
+      objectReference: {fileID: 2100000, guid: 4a96d029f309eda41b0754a89720c4f9, type: 2}
+    - target: {fileID: 1347423352228920645, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6343086628222001670, guid: dca57538833584642869aa3fccfeac0b,
         type: 3}
     - target: {fileID: 3895855595473161121, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
         type: 3}
@@ -72,6 +77,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlankFloorTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353001797229938788, guid: 8a5ca5a678106434ea9a50ecf6476c1d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a5ca5a678106434ea9a50ecf6476c1d, type: 3}

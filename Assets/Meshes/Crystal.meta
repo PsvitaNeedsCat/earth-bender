@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Meshes/Environment/Materials.meta
+guid: c4376f2f6cd073243b9523ab3055a188
+=======
 guid: 5b94005360207a344b0fdfa5eb209c72
+>>>>>>> master:Assets/Meshes/Crystal.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

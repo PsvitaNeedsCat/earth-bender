@@ -19,7 +19,12 @@ public class Player : MonoBehaviour
     float punchCooldown = 0.0f;
     private float playerGravity = -150.0f;
     private bool moveDisabled = false;
-    
+
+    private void OnDestroy()
+    {
+        controls.Disable();
+    }
+
     private void Awake()
     {
         // Init stuff

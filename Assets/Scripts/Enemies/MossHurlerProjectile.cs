@@ -8,22 +8,14 @@ public class MossHurlerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Chunk chunk = other.gameObject.GetComponent<Chunk>();
-
-        if (chunk)
-        {
-            DestroyProjectile();
-            return;
-        }
-
         PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
 
         if (playerHealth)
         {
             playerHealth.Damage(damage);
-            DestroyProjectile();
-            return;
         }
+
+        DestroyProjectile();
     }
 
     public void DestroyProjectile()

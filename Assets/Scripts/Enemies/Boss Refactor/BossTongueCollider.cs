@@ -27,6 +27,8 @@ public class BossTongueCollider : MonoBehaviour
             if (chunk)
             {
                 // Pick up & eat chunk
+                AudioManager.Instance.PlaySoundVaried("stuck");
+
                 chunk.Detach();
 
                 chunk.GetComponent<Rigidbody>().velocity = Vector3.zero;

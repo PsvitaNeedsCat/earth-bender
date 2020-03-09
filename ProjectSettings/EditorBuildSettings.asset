@@ -27,9 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level3.unity
     guid: 6ed092701ebd9164f8d46ab9a59f67e3
   - enabled: 1
-    path: Assets/Scenes/TimScene.unity
-    guid: ca2b3d9481e75574d8c8700fb1ba4fdd
-  - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: 8dc7b8c4eba543546b67d18f6c69f889
   m_configObjects:

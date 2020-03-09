@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     Vector2 playerDirection = new Vector2(0.0f, 0.0f);
     Rigidbody m_rigidBody;
     float punchCooldown = 0.0f;
-    private float playerGravity = -100.0f;
+    private float playerGravity = -150.0f;
     private bool moveDisabled = false;
     
     private void Awake()

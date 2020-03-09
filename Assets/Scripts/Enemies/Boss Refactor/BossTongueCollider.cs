@@ -53,7 +53,7 @@ public class BossTongueCollider : MonoBehaviour
 
         GroundType type = attachedChunk.type;
 
-        Destroy(attachedChunk);
+        attachedChunk.DestroyQuiet();
 
         return type;
     }

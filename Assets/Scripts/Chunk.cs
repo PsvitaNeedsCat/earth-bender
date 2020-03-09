@@ -14,6 +14,7 @@ public class Chunk : MonoBehaviour
     private Vector3 spawnPosition;
     public bool isRaised = false;
     [HideInInspector] public bool isQuitting = false;
+    bool destroyQuiet = false;
 
     private bool attemptingToStop = false;
     private int health = 2;
@@ -74,7 +75,17 @@ public class Chunk : MonoBehaviour
 
         transform.DOKill();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
-        AudioManager.Instance.PlaySoundVaried("RockDestroy");
+
+        if (!destroyQuiet)
+        {
+            AudioManager.Instance.PlaySoundVaried("RockDestroy");
+        }
+    }
+
+    public void DestroyQuiet()
+    {
+        destroyQuiet = true;
+        Destroy(this.gameObject);
     }
 
     public void Hit(Vector3 hitVec)

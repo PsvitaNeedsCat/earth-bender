@@ -7,6 +7,12 @@ public class HurtBoxScript : MonoBehaviour
     public int framesBeforeDestroy;
     public float hitForce = 1.0f;
     private int framesSkipped = 0;
+    private Player player;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     private void Update()
     {
@@ -23,10 +29,14 @@ public class HurtBoxScript : MonoBehaviour
         
         if (chunk)
         {
-            Vector3 forward = transform.forward;
-            forward.y = 0.0f;
+            //Vector3 forward = transform.forward;
+            //forward.y = 0.0f;
 
-            Vector3 cardinal = GetCardinalDir(forward);
+            Vector3 hitDir = chunk.transform.position - player.transform.position;
+            hitDir.y = 0.0f;
+            hitDir = hitDir.normalized;
+
+            Vector3 cardinal = GetCardinalDir(hitDir);
             chunk.Hit(cardinal * hitForce);
 
             Destroy(this.gameObject);

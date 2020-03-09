@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
     private List<int> loadedScenes = new List<int>();
     private const int maxScenesLoaded = 1;
     private int currentLevel;
+    bool firstScene = true;
 
     private void Awake()
     {
@@ -54,7 +55,14 @@ public class SceneController : MonoBehaviour
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));
         }
 
-        GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeIn");
+        if (!firstScene)
+        {
+            GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeIn");
+        }
+        else
+        {
+            firstScene = false;
+        }
     }
 
     public void LoadAsyncScene(int sceneIndex)

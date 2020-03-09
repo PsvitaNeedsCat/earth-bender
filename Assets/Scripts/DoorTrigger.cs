@@ -11,7 +11,27 @@ public class DoorTrigger : MonoBehaviour
         if (triggered) { return; }
         triggered = true;
 
-        Animator _fade = GameObject.Find("Fade").GetComponent<Animator>();
+        GameObject.FindObjectOfType<Player>().SetControls(false);
+
+        // Fade to black
+        GameObject.Find("Fade").GetComponent<Animator>().ResetTrigger("FadeIn");
+        GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
+
+        StartCoroutine(LoadNextLevel());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            GameObject.Find("Fade").GetComponent<Animator>().ResetTrigger("FadeIn");
+            GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeOut");
+        }
+    }
+
+    public IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(1.0f);
 
         // Set chunks to quitting so they don't trigger errors
         Chunk[] chunks = GameObject.FindObjectsOfType<Chunk>();
@@ -19,9 +39,6 @@ public class DoorTrigger : MonoBehaviour
         {
             chunks[i].isQuitting = true;
         }
-
-        // Fade to black
-        _fade.SetTrigger("FadeOut");
 
         // Load next level
         GameObject.FindObjectOfType<SceneController>().LoadNextLevel();

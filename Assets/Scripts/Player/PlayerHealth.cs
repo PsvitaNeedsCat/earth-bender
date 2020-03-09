@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     {
         healthText = GameObject.Find("PlayerHP").GetComponent<TextMeshProUGUI>();
 
+        Health = 3;
+
         playerMaterial = playerRenderer.material;
         playerMaterial = new Material(playerMaterial);
         playerRenderer.material = playerMaterial;

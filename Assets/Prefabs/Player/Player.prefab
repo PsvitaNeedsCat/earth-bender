@@ -2030,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6703264857958518696, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
@@ -2090,7 +2090,7 @@ PrefabInstance:
     - target: {fileID: 6703264857958518699, guid: 23973c31990eb5a45bcc645832296b14,
         type: 3}
       propertyPath: maxRange
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23973c31990eb5a45bcc645832296b14, type: 3}

@@ -30,25 +30,25 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 6.5
+        time: 6.9
         value: 8
         inSlope: -0
-        outSlope: 239.9968
+        outSlope: 240.00366
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 6.516667
+        time: 6.9166665
         value: 12
-        inSlope: 239.9968
+        inSlope: 240.00366
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 8
+        time: 9.183333
         value: 12
         inSlope: -0
         outSlope: -240.00366
@@ -57,7 +57,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 8.016666
+        time: 9.2
         value: 8
         inSlope: -240.00366
         outSlope: 0
@@ -93,7 +93,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 8.016666
+    m_StopTime: 9.2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -122,25 +122,25 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 6.5
+        time: 6.9
         value: 8
         inSlope: -0
-        outSlope: 239.9968
+        outSlope: 240.00366
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 6.516667
+        time: 6.9166665
         value: 12
-        inSlope: 239.9968
+        inSlope: 240.00366
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 8
+        time: 9.183333
         value: 12
         inSlope: -0
         outSlope: -240.00366
@@ -149,7 +149,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 8.016666
+        time: 9.2
         value: 8
         inSlope: -240.00366
         outSlope: 0

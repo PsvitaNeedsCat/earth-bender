@@ -10,6 +10,8 @@ public class BossTongueCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Tongue collided with " + other.name);
+
         PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
         
         if (playerHealth)

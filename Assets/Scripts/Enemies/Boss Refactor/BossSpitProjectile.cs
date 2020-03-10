@@ -11,6 +11,12 @@ public class BossSpitProjectile : MonoBehaviour
     [HideInInspector] public Rigidbody rigidBody;
     public GameObject hurtboxPrefab;
     [HideInInspector] public List<GameObject> aimIndicators;
+    public GameObject dropShadow;
+    public float dropShadowMaxRange = 50.0f;
+    public LayerMask dropShadowMask = -1;
+    public float dropShadowMinScale = 0.01f;
+    public float dropShadowMaxScale = 0.1f;
+
 
     private static Vector3[] fragmentDirections = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
     private bool isQuitting = false;
@@ -30,6 +36,8 @@ public class BossSpitProjectile : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        UpdateDropShadow();
     }
 
     private void Awake()
@@ -81,8 +89,39 @@ public class BossSpitProjectile : MonoBehaviour
         }
     }
 
-    public void AddAimIndicators(List<GameObject> newIndicators)
+    //public void AddAimIndicators(List<GameObject> newIndicators)
+    //{
+    //    aimIndicators = newIndicators;
+    //}
+
+    private void UpdateDropShadow()
     {
-        aimIndicators = newIndicators;
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, dropShadowMaxRange, dropShadowMask))
+        {
+            if (hitInfo.distance > dropShadowMaxRange || hitInfo.distance < 0.0f)
+            {
+                dropShadow.SetActive(false);
+                return;
+            }
+
+            float newScale = Mathf.Lerp(dropShadowMinScale, dropShadowMaxScale, (dropShadowMaxRange - hitInfo.distance) / dropShadowMaxRange);
+            dropShadow.SetActive(true);
+            dropShadow.transform.localScale = Vector3.one * newScale;
+            dropShadow.transform.position = hitInfo.point + Vector3.up * 0.1f;
+        }
+        else
+        {
+            dropShadow.SetActive(false);
+        }
+        
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * dropShadowMaxRange);
     }
 }

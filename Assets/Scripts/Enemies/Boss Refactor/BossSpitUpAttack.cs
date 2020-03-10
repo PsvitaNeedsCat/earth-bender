@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossSpitUpAttack : BossBehaviour
 {
     public GameObject projectilePrefab;
-    public GameObject aimIndicatorPrefab;
+    // public GameObject aimIndicatorPrefab;
     public int numProjectiles = 3;
     public float projectileFireDelay = 0.5f;
     public float waitAfterFiring = 5.0f;
@@ -79,19 +79,19 @@ public class BossSpitUpAttack : BossBehaviour
         proj.rigidBody.velocity = Vector3.zero;
         proj.transform.position = proj.aimedTile.transform.position + Vector3.up * dropHeight;
 
-        List<GameObject> aimIndicators = new List<GameObject>();
+        //List<GameObject> aimIndicators = new List<GameObject>();
 
-        aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position, Quaternion.identity, null));
+        //aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position, Quaternion.identity, null));
         
-        if (bossScript.ateRock)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position + (fragmentDirections[i] * 10.0f), Quaternion.identity, null));
-            }
-        }
+        //if (bossScript.ateRock)
+        //{
+        //    for (int i = 0; i < 4; i++)
+        //    {
+        //        aimIndicators.Add(Instantiate(aimIndicatorPrefab, aimTile.transform.position + (fragmentDirections[i] * 10.0f), Quaternion.identity, null));
+        //    }
+        //}
 
-        proj.AddAimIndicators(aimIndicators);
+        //proj.AddAimIndicators(aimIndicators);
     }
 
     public override void Reset()

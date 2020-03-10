@@ -48,6 +48,7 @@ public class BossTongueAttack : BossBehaviour
         if (typeSwallowed == GroundType.poison)
         {
             bossScript.atePoison = true;
+
         }
 
         if (typeSwallowed == GroundType.dirt)
@@ -59,7 +60,10 @@ public class BossTongueAttack : BossBehaviour
         tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
         tongueAimIndicator.SetActive(false);
 
-        AudioManager.Instance.PlaySoundVaried("gulp");
+        if (typeSwallowed != GroundType.none)
+        {
+            AudioManager.Instance.PlaySoundVaried("gulp");
+        }
     }
 
     private void ExtendTongue()

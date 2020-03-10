@@ -58,6 +58,8 @@ public class BossTongueAttack : BossBehaviour
         tongueAnimator.gameObject.SetActive(false);
         tongueAnimator.SetFloat("TongueExtendDirection", 1.0f);
         tongueAimIndicator.SetActive(false);
+
+        AudioManager.Instance.PlaySoundVaried("gulp");
     }
 
     private void ExtendTongue()

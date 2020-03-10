@@ -101,4 +101,19 @@ public class BossAnimations : MonoBehaviour
     {
         healthCanvas.SetActive(true);
     }
+
+    public void AEBigSplashSound()
+    {
+        AudioManager.Instance.PlaySoundVaried("BossJumpInWater");
+    }
+
+    public void AESmallSplashSound()
+    {
+        AudioManager.Instance.PlaySoundVaried("SmallBossJumpInWater");
+    }
+
+    public void AETingSound()
+    {
+        AudioManager.Instance.PlaySoundVaried("Ting");
+    }
 }

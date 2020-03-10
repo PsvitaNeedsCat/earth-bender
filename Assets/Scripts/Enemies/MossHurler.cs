@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MossHurler : MonoBehaviour
 {
@@ -44,6 +45,11 @@ public class MossHurler : MonoBehaviour
         MossHurlerProjectile projectile = Instantiate(projectilePrefab, projectileCreationTransform.position, projectileCreationTransform.rotation, null).GetComponent<MossHurlerProjectile>();
         projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileSpeed;
         projectile.damage = this.damage;
+
+        Vector3 projScale = projectile.transform.localScale;
+        projectile.transform.localScale = projScale * 0.1f;
+
+        projectile.transform.DOScale(projScale, 0.5f).SetEase(Ease.OutElastic);
     }
 
     public void Dead()

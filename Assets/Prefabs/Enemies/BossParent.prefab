@@ -4898,8 +4898,6 @@ MonoBehaviour:
   playerAnimator: {fileID: 4219114775894443719}
   projectilePrefab: {fileID: 5836571891961334807, guid: dbc78766539eb8f4a80827741f427d51,
     type: 3}
-  aimIndicatorPrefab: {fileID: 1203380011723506887, guid: ca41eb8007256ef49a1306e5985d974f,
-    type: 3}
   numProjectiles: 3
   projectileFireDelay: 0.25
   waitAfterFiring: 5

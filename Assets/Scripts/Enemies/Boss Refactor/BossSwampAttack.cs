@@ -45,9 +45,15 @@ public class BossSwampAttack : BossBehaviour
         yield return new WaitForSeconds(underwaterTime/2.0f);
 
         float newXPos = possibleXPositions[Random.Range(0, 3)];
+        Debug.Log("Moved Frog");
+
         Vector3 oldPos = transform.parent.position;
         oldPos.x = newXPos;
         transform.parent.position = oldPos;
+
+        Vector3 wavePos = waveObject.transform.position;
+        wavePos.x = startingX;
+        waveObject.transform.position = wavePos;
 
         yield return new WaitForSeconds(underwaterTime/2.0f);
 

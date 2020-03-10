@@ -49,7 +49,7 @@ public class SceneController : MonoBehaviour
         Debug.Log("Scene successfully loaded: " + loadedScene.name);
 
         // Don't make the main scene the main scene
-        if (loadedScene.name != "MainScene")
+        if (loadedScene.name != "MainScene" && loadedScene.name != "Menu")
         {
             // Set new scene as active
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));

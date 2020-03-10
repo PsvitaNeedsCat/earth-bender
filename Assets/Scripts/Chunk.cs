@@ -136,6 +136,8 @@ public class Chunk : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<KillBox>()) { return; }
+
         if (collision.collider.tag != "Ground" && collision.collider.tag != "Player")
         {
             if (IsAgainstWall(rigidBody.velocity.normalized, 9.5f))

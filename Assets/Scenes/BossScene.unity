@@ -1467,6 +1467,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 154535251}
+    - target: {fileID: 827186927352643919, guid: 8d7b85999f622724ea8fcf7620fa2e84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1699310232101336804, guid: 8d7b85999f622724ea8fcf7620fa2e84,
         type: 3}
       propertyPath: m_Mesh
@@ -11332,6 +11337,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1213057741}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1225497382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225497383}
+  - component: {fileID: 1225497385}
+  - component: {fileID: 1225497384}
+  m_Layer: 11
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1225497383
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225497382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1924498242}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -942}
+  m_SizeDelta: {x: 705.47, y: 122.8}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1225497384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225497382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 524d879ae60002741ab1c3aaca47d451, type: 3}
+    m_FontSize: 75
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 75
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Big Fuck-Off Frog
+--- !u!222 &1225497385
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225497382}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1306287953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14744,6 +14826,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!224 &1924498242 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4579135143971848910, guid: 8d7b85999f622724ea8fcf7620fa2e84,
+    type: 3}
+  m_PrefabInstance: {fileID: 179729084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1961005488
 PrefabInstance:
   m_ObjectHideFlags: 0

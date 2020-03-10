@@ -58,6 +58,9 @@ public class Chunk : MonoBehaviour
 
     private IEnumerator Raise()
     {
+        GameObject summonParticles = EffectsManager.Instance.SpawnEffect("rockSummon_PS");
+        summonParticles.transform.position = spawnPosition + Vector3.up * raiseAmount;
+
         transform.DOKill();
         transform.DOMoveY(spawnPosition.y + raiseAmount, raiseTime).SetEase(Ease.OutBounce);
 
@@ -77,6 +80,9 @@ public class Chunk : MonoBehaviour
 
         transform.DOKill();
         FindObjectOfType<PlayerController>().RemoveChunk(this); // ew
+        
+        GameObject smashParticle = EffectsManager.Instance.SpawnEffect("rockSmash_PS");
+        smashParticle.transform.position = this.transform.position;
 
         if (!destroyQuiet)
         {

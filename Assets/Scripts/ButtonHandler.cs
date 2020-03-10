@@ -8,6 +8,8 @@ public class ButtonHandler : MonoBehaviour
 {
     public void Play()
     {
+        SceneController.DestroyInstance();
+
         SceneManager.LoadScene("MainScene");
     }
 

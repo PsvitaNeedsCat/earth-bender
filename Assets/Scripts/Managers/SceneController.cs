@@ -49,7 +49,7 @@ public class SceneController : MonoBehaviour
         Debug.Log("Scene successfully loaded: " + loadedScene.name);
 
         // Don't make the main scene the main scene
-        if (loadedScene.name != "MainScene" && loadedScene.name != "Menu")
+        if (loadedScene.name != "MainScene")
         {
             // Set new scene as active
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));
@@ -106,5 +106,14 @@ public class SceneController : MonoBehaviour
         SceneManager.UnloadSceneAsync(sceneNames[currentLevel - 1]);
 
         SceneManager.LoadScene(sceneNames[currentLevel - 1], LoadSceneMode.Additive);
+    }
+
+    public static void DestroyInstance()
+    {
+        if (_pSceneController)
+        {
+            Destroy(_pSceneController.gameObject);
+            _pSceneController = null;
+        }
     }
 }

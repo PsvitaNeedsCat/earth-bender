@@ -52,7 +52,7 @@ public class SceneController : MonoBehaviour
         if (loadedScene.name != "MainScene")
         {
             // Set new scene as active
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneNames[loadThisScene]));
+            SceneManager.SetActiveScene(loadedScene);
         }
 
         if (!firstScene)
@@ -76,7 +76,7 @@ public class SceneController : MonoBehaviour
         if (loadedScenes.Count >= maxScenesLoaded)
         {
             // Unloads scene
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(sceneNames[loadedScenes[0]]));
+            SceneManager.UnloadSceneAsync(sceneNames[loadedScenes[0]]);
             // Removes it from the list
             loadedScenes.RemoveAt(0);
         }

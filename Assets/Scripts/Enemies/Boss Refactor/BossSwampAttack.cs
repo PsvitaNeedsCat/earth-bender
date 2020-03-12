@@ -11,7 +11,7 @@ public class BossSwampAttack : BossBehaviour
     public GameObject waveObject;
     private BossWaveCollider waveCollider;
     private CinemachineImpulseSource cameraShake;
-    private CapsuleCollider collider;
+    private CapsuleCollider bossCollider;
 
     private float startingX;
 
@@ -23,7 +23,7 @@ public class BossSwampAttack : BossBehaviour
     {
         waveCollider = waveObject.GetComponent<BossWaveCollider>();
         cameraShake = GetComponent<CinemachineImpulseSource>();
-        collider = GetComponent<CapsuleCollider>();
+        bossCollider = GetComponent<CapsuleCollider>();
 
         startingX = transform.parent.position.x;
         
@@ -41,7 +41,7 @@ public class BossSwampAttack : BossBehaviour
 
     private IEnumerator JumpBackOn()
     {
-        collider.isTrigger = true;
+        bossCollider.isTrigger = true;
         yield return new WaitForSeconds(underwaterTime/2.0f);
 
         float newXPos = possibleXPositions[Random.Range(0, 3)];
@@ -58,7 +58,7 @@ public class BossSwampAttack : BossBehaviour
         yield return new WaitForSeconds(underwaterTime/2.0f);
 
         playerAnimator.SetTrigger("SwampAttackFinish");
-        collider.isTrigger = false;
+        bossCollider.isTrigger = false;
     }
 
     public void LaunchWave()
